@@ -1,0 +1,14 @@
+{
+  "profiles": {
+    "kniga": {
+      "commandName": "Project",
+      "hotReloadEnabled": true,
+      "remoteDebugEnabled": false
+    },
+    "WSL": {
+      "commandName": "WSL2",
+      "environmentVariables": {},
+      "distributionName": ""
+    }
+  }
+}

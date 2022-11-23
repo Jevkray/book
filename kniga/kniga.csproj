@@ -5,10 +5,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Configurations>Debug;Release;ConEmu</Configurations>
   </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\pages\pages.csproj" />
-  </ItemGroup>
 
 </Project>
