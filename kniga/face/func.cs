@@ -30,14 +30,14 @@ namespace kniga.face
             {
                 return number;
             }
-            else 
+            else
             {
                 errorMessages.ErrorMessage(errorMessages.ErrorType.DefaultError);
                 return 0;
             }
         }
 
-        public static int BuildRectangle(int rectangleHeight, int rectangleWidth)
+        public static int BuildAndFillRectangleArea(int xStartCoord, int yStartCoord, int xEndCoord, int yEndCoord, int rectangleHeight, int rectangleWidth)
         {
             Console.Clear();
             char[,] rectangleArea = new char[rectangleHeight, rectangleWidth];
@@ -45,37 +45,18 @@ namespace kniga.face
             {
                 for (int j = 0; j < rectangleArea.GetLength(1); j++)
                 {
-                    rectangleArea[i, j] = '\u25A1';
+                    //if (i >= yStartCoord && i <= yEndCoord && j >= xStartCoord && j <= xEndCoord) // ПОМЕНЯТЬ УСЛОВИЕ А ТО ХУЙНЯ.
+                    {
+                        rectangleArea[i, j] = '*';
+                    }
+                    else
+                    {
+                        rectangleArea[i, j] = '\u25A1';
+                    }
                     Console.Write(rectangleArea[i, j]);
                 }
                 Console.WriteLine();
             }
-            return 0;
-        }
-
-        public static int FillRectangleArea(int xStartCoord,int yStartCoord, int xEndCoord,int yEndCoord,int rectangleHeight,int rectangleWidth )
-        {
-            Console.Clear();
-            char[,] rectangleArea = new char[rectangleHeight, rectangleWidth];
-            for (int i = 0; i < rectangleArea.GetLength(0); i++)
-            {
-                for (int j = 0; j < rectangleArea.GetLength(1); j++)
-                {
-                    rectangleArea[i, j] = '\u25A1';
-                    Console.Write(rectangleArea[i, j]);
-                }
-                Console.WriteLine();
-            }
-
-            for (int i = xStartCoord; i < xEndCoord; i++)
-            {
-                for (int j = yStartCoord; j < yEndCoord; j++)
-                {
-                    rectangleArea[i, j] = '*';
-                }
-            }
-
-
             return 0;
         }
 
