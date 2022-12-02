@@ -37,25 +37,36 @@ namespace kniga.face
             }
         }
 
-        public static int BuildRectangle(int inputRectangleHeight, int inputRectangleWidth)
+        public static int BuildRectangle(int rectangleHeight, int rectangleWidth)
         {
-
-            for (int i = 0; i < inputRectangleHeight; i++)
+            Console.Clear();
+            char[,] rectangleArea = new char[rectangleHeight, rectangleWidth];
+            for (int i = 0; i < rectangleArea.GetLength(0); i++)
             {
-                Console.WriteLine();
-                for (int j = 0; j < inputRectangleWidth; j++)
+                for (int j = 0; j < rectangleArea.GetLength(1); j++)
                 {
-                    Console.Write('\u25A1');
+                    rectangleArea[i, j] = '\u25A1';
+                    Console.Write(rectangleArea[i, j]);
                 }
+                Console.WriteLine();
             }
             return 0;
         }
 
-        public static int FillRectangleArea(int xStartCoord,int yStartCoord, int xEndCoord,int yEndCoord,int RectangleHeight,int RectangleWidth )
+        public static int FillRectangleArea(int xStartCoord,int yStartCoord, int xEndCoord,int yEndCoord,int rectangleHeight,int rectangleWidth )
         {
-
-
-
+            Console.Clear();
+            char[,] rectangleArea = new char[rectangleHeight, rectangleWidth];
+            for (int i = 0; i < rectangleArea.GetLength(0); i++)
+            {
+                for (int j = 0; j < rectangleArea.GetLength(1); j++)
+                {
+                    rectangleArea[i, j] = '\u25A1';
+                    Console.Write(rectangleArea[i, j]);
+                }
+                Console.WriteLine();
+            }
+            
             return 0;
         }
 
