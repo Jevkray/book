@@ -66,7 +66,16 @@ namespace kniga.face
                 }
                 Console.WriteLine();
             }
-            
+
+            for (int i = xStartCoord; i < xEndCoord; i++)
+            {
+                for (int j = yStartCoord; j < yEndCoord; j++)
+                {
+                    rectangleArea[i, j] = '*';
+                }
+            }
+
+
             return 0;
         }
 
