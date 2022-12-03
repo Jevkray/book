@@ -225,14 +225,14 @@ namespace kniga
                             }
                             while (rectangle.height == 0);
 
-                            func.BuildAndFillRectangleArea(rectangle.height, rectangle.width,0,0,0,0);
+                            func.BuildAndFillRectangleArea(rectangle.height, rectangle.width, -1, -1, -1, -1);
                             Console.ReadKey();
                             Console.Clear();
                             Console.WriteLine("Рисование цветных областей в основной");
                             Console.ReadKey();
                             Console.Clear();
 
-                            func.BuildAndFillRectangleArea(rectangle.height, rectangle.width,0,0,0,0);
+                            func.BuildAndFillRectangleArea(rectangle.height, rectangle.width,-1, -1, -1, -1);
 
                             bool isResumeWork;
                             do
@@ -251,7 +251,7 @@ namespace kniga
                                     Console.WriteLine("Введите конечную Y координату");
                                     int yEndCoord = func.ParseToIntPositiveNumber(Console.ReadLine());
 
-                                    func.BuildAndFillRectangleArea(xStartCoord, yStartCoord, xEndCoord, yEndCoord, rectangle.height, rectangle.width);
+                                    func.BuildAndFillRectangleArea(rectangle.height, rectangle.width, xStartCoord, yStartCoord, xEndCoord, yEndCoord);
 
                                     isResumeWork = true;
                                 }

@@ -37,7 +37,8 @@ namespace kniga.face
             }
         }
 
-        public static int BuildAndFillRectangleArea(int xStartCoord, int yStartCoord, int xEndCoord, int yEndCoord, int rectangleHeight, int rectangleWidth)
+        //СДЕЛАТЬ ЧТОБЫ НЕ СБРАСЫВАЛСЯ ПРЕДЫДУЩИЙ КВАДРАТ ИЗ МАТРИЦЫ
+        public static int BuildAndFillRectangleArea(int rectangleHeight, int rectangleWidth, int xStartCoord, int yStartCoord, int xEndCoord, int yEndCoord)
         {
             Console.Clear();
             char[,] rectangleArea = new char[rectangleHeight, rectangleWidth];
@@ -45,7 +46,7 @@ namespace kniga.face
             {
                 for (int j = 0; j < rectangleArea.GetLength(1); j++)
                 {
-                    //if (i >= yStartCoord && i <= yEndCoord && j >= xStartCoord && j <= xEndCoord) // ПОМЕНЯТЬ УСЛОВИЕ А ТО ХУЙНЯ.
+                    if (i >= yStartCoord && i <= yEndCoord && j >= xStartCoord && j <= xEndCoord)
                     {
                         rectangleArea[i, j] = '*';
                     }
