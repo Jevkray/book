@@ -225,7 +225,7 @@ namespace kniga
                                 }
                                 while (rectangle.height == 0);
 
-                                char[,] rectangleArea = func.CreateRectangleArea(rectangle.height, rectangle.width);
+                                string[,] rectangleArea = func.CreateRectangleArea(rectangle.height, rectangle.width);
                                 func.DisplayRectangleArea(rectangleArea);
 
                                 Console.ReadKey();
@@ -237,21 +237,27 @@ namespace kniga
                                 bool isResumeWork;
                                 do
                                 {
-                                    Console.WriteLine("Если хотите разместить область нажмите Y");
+                                    func.DisplayRectangleArea(rectangleArea);
+
+                                    Console.WriteLine("Если хотите разместить область внутри основной нажмите Y");
                                     var a = Console.ReadKey().KeyChar;
+                                    Console.Clear();
+
+                                    func.DisplayRectangleArea(rectangleArea);
+
                                     if (a == 'y' | a == 'Y')
                                     {
                                         Console.WriteLine("Введите начальную X координату");
-                                        int xStartCoord = func.ParseToIntPositiveNumber(Console.ReadLine());
+                                        int xStartCoord = Int32.Parse(Console.ReadLine());
                                         Console.WriteLine("Введите начальную Y координату");
-                                        int yStartCoord = func.ParseToIntPositiveNumber(Console.ReadLine());
+                                        int yStartCoord = Int32.Parse(Console.ReadLine());
 
                                         Console.WriteLine("Введите конечную X координату");
-                                        int xEndCoord = func.ParseToIntPositiveNumber(Console.ReadLine());
+                                        int xEndCoord = Int32.Parse(Console.ReadLine());
                                         Console.WriteLine("Введите конечную Y координату");
-                                        int yEndCoord = func.ParseToIntPositiveNumber(Console.ReadLine());
+                                        int yEndCoord = Int32.Parse(Console.ReadLine());
 
-                                        //char[,] rectangleArea = func.CreateRectangleArea(rectangle.height, rectangle.width, xStartCoord, yStartCoord, xEndCoord, yEndCoord);
+                                        func.FillRectangleArea(rectangleArea, xStartCoord, yStartCoord, xEndCoord, yEndCoord);
 
                                         isResumeWork = true;
                                     }

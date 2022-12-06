@@ -23,6 +23,20 @@ namespace kniga.face
             }
         }
 
+        public static int ParseToIntNumber(string input)
+        {
+            bool result = int.TryParse(input, out int number);
+            if (result == true)
+            {
+                return number;
+            }
+            else
+            {
+                errorMessages.ErrorMessage(errorMessages.ErrorType.DefaultError);
+                return 0;
+            }
+        }
+
         public static double ParseToDoubleNumber(string input)
         {
             bool result = double.TryParse(input, out double number);
@@ -38,21 +52,21 @@ namespace kniga.face
         }
 
         //СДЕЛАТЬ ЧТОБЫ НЕ СБРАСЫВАЛСЯ ПРЕДЫДУЩИЙ КВАДРАТ ИЗ МАТРИЦЫ
-        public static char[,] CreateRectangleArea(int rectangleHeight, int rectangleWidth)
+        public static string[,] CreateRectangleArea(int rectangleHeight, int rectangleWidth)
         {
             Console.Clear();
-            char[,] rectangleArea = new char[rectangleHeight, rectangleWidth];
+            string[,] rectangleArea = new string[rectangleHeight, rectangleWidth];
             for (int i = 0; i < rectangleArea.GetLength(0); i++)
             {
                 for (int j = 0; j < rectangleArea.GetLength(1); j++)
                 {
-                    rectangleArea[i, j] = '\u25A1';
+                    rectangleArea[i, j] = "\u25A1";
                 }
             }
             return rectangleArea;
         }
 
-        public static int DisplayRectangleArea(char[,] rectangleArea)
+        public static int DisplayRectangleArea(string[,] rectangleArea)
 
         {
             for (int i = 0; i < rectangleArea.GetLength(0); i++)
@@ -63,36 +77,25 @@ namespace kniga.face
                     Console.Write(rectangleArea[i, j]);
                 }
             }
+            Console.WriteLine("\n");
             return 0;
         }
 
-        public static char[,] FillRectangleArea(char[,] rectangleArea)
-        {
-            return null;
-        }
-
-        /*
-         public static char[,] CreateRectangleArea(int rectangleHeight, int rectangleWidth, int xStartCoord, int yStartCoord, int xEndCoord, int yEndCoord)
+        public static string[,] FillRectangleArea(string[,] rectangleArea, int xStartCoord, int yStartCoord, int xEndCoord, int yEndCoord)
         {
             Console.Clear();
-            char[,] rectangleArea = new char[rectangleHeight, rectangleWidth];
             for (int i = 0; i < rectangleArea.GetLength(0); i++)
             {
                 for (int j = 0; j < rectangleArea.GetLength(1); j++)
                 {
                     if (i >= yStartCoord && i <= yEndCoord && j >= xStartCoord && j <= xEndCoord)
                     {
-                        rectangleArea[i, j] = '*';
-                    }
-                    else
-                    {
-                        rectangleArea[i, j] = '\u25A1';
+                        rectangleArea[i, j] = "*";
                     }
                 }
             }
             return rectangleArea;
         }
-         */
 
     }
 }
