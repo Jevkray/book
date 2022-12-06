@@ -81,7 +81,7 @@ namespace kniga.face
             return 0;
         }
 
-        public static string[,] FillRectangleArea(string[,] rectangleArea, int xStartCoord, int yStartCoord, int xEndCoord, int yEndCoord)
+        public static string[,] FillRectangleArea(string[,] rectangleArea, int xStartCoord, int yStartCoord, int xEndCoord, int yEndCoord, string fillSymbol)
         {
             Console.Clear();
             for (int i = 0; i < rectangleArea.GetLength(0); i++)
@@ -89,8 +89,8 @@ namespace kniga.face
                 for (int j = 0; j < rectangleArea.GetLength(1); j++)
                 {
                     if (i >= yStartCoord && i <= yEndCoord && j >= xStartCoord && j <= xEndCoord)
-                    {  
-                        rectangleArea[i, j] = "*";
+                    {
+                        rectangleArea[i, j] = fillSymbol;
                     }
                 }
             }
@@ -99,4 +99,3 @@ namespace kniga.face
 
     }
 }
-/*ТАК Я ДОДУМАЛСЯ ДО ТОГО ЧТО МОЖНО ПО ОТДЕЛЬНОСТИ ЗАПИСЫВАТЬ И ВЫВОДИТЬ МАТРИЦУ*/

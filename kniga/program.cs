@@ -230,7 +230,7 @@ namespace kniga
 
                                 Console.ReadKey();
                                 Console.Clear();
-                                Console.WriteLine("Рисование цветных областей в основной");
+                                Console.WriteLine("Рисование областей в основной");
                                 Console.ReadKey();
                                 Console.Clear();
 
@@ -257,7 +257,10 @@ namespace kniga
                                         Console.WriteLine("Введите конечную Y координату");
                                         int yEndCoord = Int32.Parse(Console.ReadLine());
 
-                                        func.FillRectangleArea(rectangleArea, xStartCoord, yStartCoord, xEndCoord, yEndCoord);
+                                        Console.WriteLine("Введите который будет основой области:");
+                                        string symbolOfFillRectangleArea = (Console.ReadLine());
+
+                                        func.FillRectangleArea(rectangleArea, xStartCoord, yStartCoord, xEndCoord, yEndCoord, symbolOfFillRectangleArea);
 
                                         isResumeWork = true;
                                     }
