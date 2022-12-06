@@ -38,7 +38,41 @@ namespace kniga.face
         }
 
         //СДЕЛАТЬ ЧТОБЫ НЕ СБРАСЫВАЛСЯ ПРЕДЫДУЩИЙ КВАДРАТ ИЗ МАТРИЦЫ
-        public static int BuildAndFillRectangleArea(int rectangleHeight, int rectangleWidth, int xStartCoord, int yStartCoord, int xEndCoord, int yEndCoord)
+        public static char[,] CreateRectangleArea(int rectangleHeight, int rectangleWidth)
+        {
+            Console.Clear();
+            char[,] rectangleArea = new char[rectangleHeight, rectangleWidth];
+            for (int i = 0; i < rectangleArea.GetLength(0); i++)
+            {
+                for (int j = 0; j < rectangleArea.GetLength(1); j++)
+                {
+                    rectangleArea[i, j] = '\u25A1';
+                }
+            }
+            return rectangleArea;
+        }
+
+        public static int DisplayRectangleArea(char[,] rectangleArea)
+
+        {
+            for (int i = 0; i < rectangleArea.GetLength(0); i++)
+            {
+                Console.WriteLine();
+                for (int j = 0; j < rectangleArea.GetLength(1); j++)
+                {
+                    Console.Write(rectangleArea[i, j]);
+                }
+            }
+            return 0;
+        }
+
+        public static char[,] FillRectangleArea(char[,] rectangleArea)
+        {
+            return null;
+        }
+
+        /*
+         public static char[,] CreateRectangleArea(int rectangleHeight, int rectangleWidth, int xStartCoord, int yStartCoord, int xEndCoord, int yEndCoord)
         {
             Console.Clear();
             char[,] rectangleArea = new char[rectangleHeight, rectangleWidth];
@@ -54,12 +88,12 @@ namespace kniga.face
                     {
                         rectangleArea[i, j] = '\u25A1';
                     }
-                    Console.Write(rectangleArea[i, j]);
                 }
-                Console.WriteLine();
             }
-            return 0;
+            return rectangleArea;
         }
+         */
 
     }
 }
+/*ТАК Я ДОДУМАЛСЯ ДО ТОГО ЧТО МОЖНО ПО ОТДЕЛЬНОСТИ ЗАПИСЫВАТЬ И ВЫВОДИТЬ МАТРИЦУ*/
