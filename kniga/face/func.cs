@@ -89,7 +89,7 @@ namespace kniga.face
                 for (int j = 0; j < rectangleArea.GetLength(1); j++)
                 {
                     if (i >= yStartCoord && i <= yEndCoord && j >= xStartCoord && j <= xEndCoord)
-                    {
+                    {  
                         rectangleArea[i, j] = "*";
                     }
                 }
