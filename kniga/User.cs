@@ -18,5 +18,14 @@ public class User
         public int height { get; set; } = 0;
         public int width { get; set; } = 0;
     }
+
+    public class TicTacToe
+    {
+        public int scale { get; set; } = 0;
+        public int height { get; set; } = 0;
+        public int width { get; set; } = 0;
+        public int score { get; set; } = 0;
+        public int steps { get; set; } = 0;
+    }
 }
 

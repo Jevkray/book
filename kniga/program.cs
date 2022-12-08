@@ -276,9 +276,32 @@ namespace kniga
                                 Console.WriteLine("Конец.");
                             }
                         }
+                        goto case "4";
 
+                    case "4":
+                        {
+                            //Крестики - нолики - игра
+                            User.TicTacToe tictactoe = new User.TicTacToe();
+
+                            tictactoe.scale = 3;
+
+                            tictactoe.width = tictactoe.height = tictactoe.scale;
+
+                            string[,] tictactoeArea = new string[tictactoe.width, tictactoe.height];
+
+
+                            Console.WriteLine("---------");
+                            for (int i = 0; i < tictactoeArea.GetLength(0); i++)
+                            {
+                                for (int j = 0; j < tictactoeArea.GetLength(1); j++)
+                                {
+                                    Console.Write($" {tictactoeArea[i, j] = "\u25A1"} ");
+                                }
+                                Console.WriteLine();
+                            }
+                            Console.WriteLine("---------");
+                        }
                         break;
-
                 }
             }
         }

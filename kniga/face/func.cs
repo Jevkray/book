@@ -51,11 +51,12 @@ namespace kniga.face
             }
         }
 
-        //СДЕЛАТЬ ЧТОБЫ НЕ СБРАСЫВАЛСЯ ПРЕДЫДУЩИЙ КВАДРАТ ИЗ МАТРИЦЫ
-        public static string[,] CreateRectangleArea(int rectangleHeight, int rectangleWidth)
+        //Рисование полей с заполнением.
+
+        public static string[,] CreateRectangleArea(int Height, int Width)
         {
             Console.Clear();
-            string[,] rectangleArea = new string[rectangleHeight, rectangleWidth];
+            string[,] rectangleArea = new string[Height, Width];
             for (int i = 0; i < rectangleArea.GetLength(0); i++)
             {
                 for (int j = 0; j < rectangleArea.GetLength(1); j++)
@@ -96,6 +97,16 @@ namespace kniga.face
             }
             return rectangleArea;
         }
+
+        //КРЕСТИКИ-НОЛИКИ
+
+        //public static string[,] CreateTicTacToeArea(int Height, int Width)
+        //{
+        //    Console.Clear();
+        //    string[,] TicTacToeArea = new string[Height, Width];
+
+        //    return TicTacToeArea;
+        //}
 
     }
 }
