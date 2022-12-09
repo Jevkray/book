@@ -100,13 +100,35 @@ namespace kniga.face
 
         //КРЕСТИКИ-НОЛИКИ
 
-        //public static string[,] CreateTicTacToeArea(int Height, int Width)
-        //{
-        //    Console.Clear();
-        //    string[,] TicTacToeArea = new string[Height, Width];
+        public static string[] CreateTicTacToeArea()
+        {
+            string[] TicTacToeArea = new string[9];
+            for (int i = 0; i < 9; i++)
+            {
+                TicTacToeArea[i] = "\u25A1";
+            }
+            return TicTacToeArea;
+        }
 
-        //    return TicTacToeArea;
-        //}
+        public static int DisplayTicTacToeArea(string[] tictactoeArea)
+        {
+            for (int i = 0; i < 9; i++)
+            {
+                Console.Write($" {tictactoeArea[i]} ");
+                if (i % 3 == 2)
+                    Console.WriteLine();
+            }
+            return 0;
+        }
+
+        public static string[] ReplaceElementTicTacToeArea(string[] tictactoeArea, int cellNumber, bool selectedSymbol) //X - True , O - false
+        {
+                    if (selectedSymbol == true)
+                    { tictactoeArea[cellNumber] = "X"; }
+                    if (selectedSymbol == false)
+                    { tictactoeArea[cellNumber] = "O"; }
+                    return tictactoeArea;
+        }
 
     }
 }

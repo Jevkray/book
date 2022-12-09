@@ -6,26 +6,26 @@ using System.Threading.Tasks;
 using kniga.face;
 public class User 
 {
-    public string name = "Undefined";   
-    public int age = 0;
+    public string Name = "Undefined";   
+    public int Age = 0;
     public void Print()
     {
-        Console.WriteLine($"User {name} has {age} years");
+        Console.WriteLine($"User {Name} has {Age} years");
     }
 
     public class Rectangle
     {
-        public int height { get; set; } = 0;
-        public int width { get; set; } = 0;
+        public int Height { get; set; } = 0;
+        public int Width { get; set; } = 0;
     }
 
     public class TicTacToe
     {
-        public int scale { get; set; } = 0;
-        public int height { get; set; } = 0;
-        public int width { get; set; } = 0;
-        public int score { get; set; } = 0;
-        public int steps { get; set; } = 0;
+        public int Scale { get; set; } = 0;
+        public int Height { get; set; } = 0;
+        public int Width { get; set; } = 0;
+        public int Score { get; set; } = 0;
+        public int Steps { get; set; } = 0;
     }
 }
 

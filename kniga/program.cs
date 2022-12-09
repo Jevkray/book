@@ -41,15 +41,15 @@ namespace kniga
                             string? name = Console.ReadLine();
 
                             User user = new User();
-                            user.name = name;
+                            user.Name = name;
                             Console.Clear();
 
                             do // do .. while - выступает в качестве возвращения в начало , в случае ошибки
                             {
                                 Console.Write("Введите возраст персонажа: ");
-                                user.age = func.ParseToIntPositiveNumber(Console.ReadLine());
+                                user.Age = func.ParseToIntPositiveNumber(Console.ReadLine());
                             }
-                            while (user.age == 0);
+                            while (user.Age == 0);
 
                             Console.Clear();
 
@@ -214,18 +214,18 @@ namespace kniga
                                 do
                                 {
                                     Console.Write("Введите длинну стороны прямоугольника: ");
-                                    rectangle.width = func.ParseToIntPositiveNumber(Console.ReadLine());
+                                    rectangle.Width = func.ParseToIntPositiveNumber(Console.ReadLine());
                                 }
-                                while (rectangle.width == 0);
+                                while (rectangle.Width == 0);
 
                                 do
                                 {
                                     Console.Write("Введите высоту стороны прямоугольника: ");
-                                    rectangle.height = func.ParseToIntPositiveNumber(Console.ReadLine());
+                                    rectangle.Height = func.ParseToIntPositiveNumber(Console.ReadLine());
                                 }
-                                while (rectangle.height == 0);
+                                while (rectangle.Height == 0);
 
-                                string[,] rectangleArea = func.CreateRectangleArea(rectangle.height, rectangle.width);
+                                string[,] rectangleArea = func.CreateRectangleArea(rectangle.Height, rectangle.Width);
                                 func.DisplayRectangleArea(rectangleArea);
 
                                 Console.ReadKey();
@@ -275,6 +275,7 @@ namespace kniga
                                 Console.Clear();
                                 Console.WriteLine("Конец.");
                             }
+                            if (ModeChoice == 'F') { break; }
                         }
                         goto case "4";
 
@@ -283,23 +284,38 @@ namespace kniga
                             //Крестики - нолики - игра
                             User.TicTacToe tictactoe = new User.TicTacToe();
 
-                            tictactoe.scale = 3;
+                            tictactoe.Scale = 3;
+                            tictactoe.Width = tictactoe.Height = tictactoe.Scale;
 
-                            tictactoe.width = tictactoe.height = tictactoe.scale;
+                            string[] tictactoeArea = func.CreateTicTacToeArea();
 
-                            string[,] tictactoeArea = new string[tictactoe.width, tictactoe.height];
+                            bool symbolTurn = true;
 
-
-                            Console.WriteLine("---------");
-                            for (int i = 0; i < tictactoeArea.GetLength(0); i++)
+                            bool isResumeWork;
+                            
+                            //Graphic interface
+                            do
                             {
-                                for (int j = 0; j < tictactoeArea.GetLength(1); j++)
+                                Console.WriteLine("---------");
+                                func.DisplayTicTacToeArea(tictactoeArea);
+                                Console.WriteLine("---------");
+                                int choicedPos = 0;
+                                do
                                 {
-                                    Console.Write($" {tictactoeArea[i, j] = "\u25A1"} ");
+                                    int numberChoice = Int32.Parse(Console.ReadKey().KeyChar.ToString());
+                                    choicedPos = numberChoice - 1;
                                 }
-                                Console.WriteLine();
+                                while (choicedPos > 9 && choicedPos < 1);
+
+                                func.ReplaceElementTicTacToeArea(tictactoeArea, choicedPos, symbolTurn);
+                                
+
+                                Console.Clear();
+                                symbolTurn = !symbolTurn;
+                                isResumeWork = true;
                             }
-                            Console.WriteLine("---------");
+                            while (isResumeWork == true);
+                            
                         }
                         break;
                 }
