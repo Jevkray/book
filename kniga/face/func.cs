@@ -129,6 +129,5 @@ namespace kniga.face
                     { tictactoeArea[cellNumber] = "O"; }
                     return tictactoeArea;
         }
-
     }
 }

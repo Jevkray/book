@@ -292,7 +292,7 @@ namespace kniga
                             bool symbolTurn = true;
 
                             bool isResumeWork;
-                            
+
                             //Graphic interface
                             do
                             {
@@ -308,14 +308,18 @@ namespace kniga
                                 while (choicedPos > 9 && choicedPos < 1);
 
                                 func.ReplaceElementTicTacToeArea(tictactoeArea, choicedPos, symbolTurn);
-                                
+
+                                //if (tictactoeArea[choicedPos])
+                                //{
+
+                                //}
 
                                 Console.Clear();
                                 symbolTurn = !symbolTurn;
                                 isResumeWork = true;
                             }
                             while (isResumeWork == true);
-                            
+
                         }
                         break;
                 }
