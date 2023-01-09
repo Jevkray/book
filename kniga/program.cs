@@ -22,7 +22,6 @@ namespace kniga
                     Console.Clear();
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("Быстрый переход");
-                    Console.ForegroundColor = ConsoleColor.DarkBlue;
                     Console.Write("Введите номер страницы на которую желаете перейти:");
                     ModeChiceSwitch = Console.ReadLine();
                     ModeChoice = 'F';
@@ -248,14 +247,14 @@ namespace kniga
                                     if (a == 'y' | a == 'Y')
                                     {
                                         Console.WriteLine("Введите начальную X координату");
-                                        int xStartCoord = Int32.Parse(Console.ReadLine());
+                                        int xStartCoord = Int32.Parse(Console.ReadLine()) - 1;
                                         Console.WriteLine("Введите начальную Y координату");
-                                        int yStartCoord = Int32.Parse(Console.ReadLine());
+                                        int yStartCoord = Int32.Parse(Console.ReadLine()) - 1;
 
                                         Console.WriteLine("Введите конечную X координату");
-                                        int xEndCoord = Int32.Parse(Console.ReadLine());
+                                        int xEndCoord = Int32.Parse(Console.ReadLine()) - 1;
                                         Console.WriteLine("Введите конечную Y координату");
-                                        int yEndCoord = Int32.Parse(Console.ReadLine());
+                                        int yEndCoord = Int32.Parse(Console.ReadLine()) - 1;
 
                                         Console.WriteLine("Введите который будет основой области:");
                                         string symbolOfFillRectangleArea = (Console.ReadLine());
@@ -281,6 +280,7 @@ namespace kniga
 
                     case "4":
                         {
+                            {
                             //Крестики - нолики - игра
                             User.TicTacToe tictactoe = new User.TicTacToe();
 
@@ -319,7 +319,8 @@ namespace kniga
                                 isResumeWork = true;
                             }
                             while (isResumeWork == true);
-
+                            }
+                            if (ModeChoice == 'F') { break; }
                         }
                         break;
                 }
