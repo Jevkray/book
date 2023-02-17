@@ -281,53 +281,63 @@ namespace kniga
                     case "4":
                         {
                             {
-                            //Крестики - нолики - игра
-                            User.TicTacToe tictactoe = new User.TicTacToe();
+                                //Крестики - нолики - игра
+                                User.TicTacToe tictactoe = new User.TicTacToe();
 
-                            tictactoe.Scale = 3;
-                            tictactoe.Width = tictactoe.Height = tictactoe.Scale;
+                                tictactoe.Scale = 3;
+                                tictactoe.Width = tictactoe.Height = tictactoe.Scale;
 
-                            string[] tictactoeArea = func.CreateTicTacToeArea();
+                                string[] tictactoeArea = func.CreateTicTacToeArea();
 
-                            bool symbolTurn = true;
+                                bool symbolTurn = true;
 
-                            bool isResumeWork;
+                                bool isResumeWork;
 
-                            //Graphic interface
-                            do
-                            {
-                                Console.WriteLine("---------");
-                                func.DisplayTicTacToeArea(tictactoeArea);
-                                Console.WriteLine("---------");
-
-                                int choicedPos = 0;
-                                bool numberChoiceParse;
-
+                                //Graphic interface
                                 do
                                 {
-                                    numberChoiceParse = Int32.TryParse(Console.ReadKey().KeyChar.ToString(), out int numberChoice);
+                                    Console.WriteLine("---------");
+                                    func.DisplayTicTacToeArea(tictactoeArea);
+                                    Console.WriteLine("---------");
+
+                                    User.TicTacToe.CellPosition cellPosition = new User.TicTacToe.CellPosition();
+                                    cellPosition.ChoicedPos = 0;
+                                    cellPosition.IsFree = true;
+
+                                    bool numberChoiceParse;
+
+                                    do
+                                    {
+                                        numberChoiceParse = Int32.TryParse(Console.ReadKey().KeyChar.ToString(), out int numberChoice);
                                         if (numberChoiceParse == false)
                                         {
                                             break;
                                         }
-                                    choicedPos = numberChoice - 1;
+                                        cellPosition.ChoicedPos = numberChoice - 1;
+                                        cellPosition.IsFree = false;
+                                    }
+                                    while (numberChoiceParse == true && cellPosition.ChoicedPos > 9 && cellPosition.ChoicedPos < 1 && cellPosition.IsFree == true);//Какой-то косяк с IsFree - не пашет
+
+                                    func.ReplaceElementTicTacToeArea(tictactoeArea, cellPosition.ChoicedPos, symbolTurn);
+
+                                    //if (tictactoeArea[choicedPos])
+                                    //{
+
+                                    //}
+
+                                    Console.Clear();
+                                    symbolTurn = !symbolTurn;
+                                    isResumeWork = true;
                                 }
-                                while (numberChoiceParse == true && choicedPos > 9 && choicedPos < 1);
-
-                                func.ReplaceElementTicTacToeArea(tictactoeArea, choicedPos, symbolTurn);
-
-                                //if (tictactoeArea[choicedPos])
-                                //{
-
-                                //}
-
-                                Console.Clear();
-                                symbolTurn = !symbolTurn;
-                                isResumeWork = true;
-                            }
-                            while (isResumeWork == true);
+                                while (isResumeWork == true);
                             }
                             if (ModeChoice == 'F') { break; }
+                        }
+                        break;
+
+                    case "5":
+                        {
+                            //Тупо тестовый
                         }
                         break;
                 }

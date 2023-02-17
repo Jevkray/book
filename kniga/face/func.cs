@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using kniga.face.constants; //пишем чтобы сократить путь (раньше писали kniga.face.constants.errorMessages.ErrorMessage.... а теперь просто errorMessages...
 
+
 namespace kniga.face
 {
     public class func
@@ -121,13 +122,19 @@ namespace kniga.face
             return 0;
         }
 
+        public static string[] PlaceElementTicTacToeArea(string[] tictactoeArea, int cellNumber, bool selectedSymbol)
+        {
+            
+            return null;
+        }
+
         public static string[] ReplaceElementTicTacToeArea(string[] tictactoeArea, int cellNumber, bool selectedSymbol) //X - True , O - false
         {
-                    if (selectedSymbol == true)
-                    { tictactoeArea[cellNumber] = "X"; }
-                    if (selectedSymbol == false)
-                    { tictactoeArea[cellNumber] = "O"; }
-                    return tictactoeArea;
+            if (selectedSymbol == true)
+            { tictactoeArea[cellNumber] = "X"; }
+            if (selectedSymbol == false)
+            { tictactoeArea[cellNumber] = "O"; }
+            return tictactoeArea;
         }
     }
 }
