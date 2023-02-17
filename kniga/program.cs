@@ -324,8 +324,11 @@ namespace kniga
                                     }
                                     while (numberChoiceParse == true && cell[numberChoice].ChoicedPos > 9 && cell[numberChoice].ChoicedPos < 1 && cell[numberChoice].IsFree == true);//Какой-то косяк с IsFree - не пашет
 
-                                    func.ReplaceElementTicTacToeArea(tictactoeArea, cell[numberChoice].ChoicedPos, symbolTurn);
-
+                                    if (cell[numberChoice].IsFree == false)//Нужно разобраться - какая - то муть.
+                                    {
+                                        func.ReplaceElementTicTacToeArea(tictactoeArea, cell[numberChoice].ChoicedPos, symbolTurn);
+                                    }
+                                    else break;
                                     //if (tictactoeArea[choicedPos])
                                     //{
 
