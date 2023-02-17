@@ -299,13 +299,20 @@ namespace kniga
                                 Console.WriteLine("---------");
                                 func.DisplayTicTacToeArea(tictactoeArea);
                                 Console.WriteLine("---------");
+
                                 int choicedPos = 0;
+                                bool numberChoiceParse;
+
                                 do
                                 {
-                                    int numberChoice = Int32.Parse(Console.ReadKey().KeyChar.ToString());
+                                    numberChoiceParse = Int32.TryParse(Console.ReadKey().KeyChar.ToString(), out int numberChoice);
+                                        if (numberChoiceParse == false)
+                                        {
+                                            break;
+                                        }
                                     choicedPos = numberChoice - 1;
                                 }
-                                while (choicedPos > 9 && choicedPos < 1);
+                                while (numberChoiceParse == true && choicedPos > 9 && choicedPos < 1);
 
                                 func.ReplaceElementTicTacToeArea(tictactoeArea, choicedPos, symbolTurn);
 
