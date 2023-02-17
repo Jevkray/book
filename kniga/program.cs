@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using kniga.face;
-
 namespace kniga
 
 {
@@ -288,15 +287,14 @@ namespace kniga
                                 tictactoe.Width = tictactoe.Height = tictactoe.Scale;
 
                                 List<User.TicTacToe.Cell> cell = new List<User.TicTacToe.Cell>();//нужно думать.
-                                for (int i = 0; i < (tictactoe.Scale*tictactoe.Scale); i++)
+                                for (int i = 0; i < tictactoe.Scale * tictactoe.Scale + 10; i++)
                                 {
-                                    cell.Add(new User.TicTacToe.Cell() { ChoicedPos = 0, IsFree = true });
+                                    cell.Add(new User.TicTacToe.Cell() { ChoicedPos = i, IsFree = true });
                                 }
 
                                 string[] tictactoeArea = func.CreateTicTacToeArea(tictactoe.Scale);
 
-
-                                bool symbolTurn = true;
+                                bool turnStep = true;
 
                                 bool isResumeWork;
 
@@ -310,32 +308,28 @@ namespace kniga
                                     bool numberChoiceParse;
                                     int numberChoice = 0;
 
-                                    cell[numberChoice].ChoicedPos = 0;
-
                                     do
                                     {
                                         numberChoiceParse = Int32.TryParse(Console.ReadKey().KeyChar.ToString(), out numberChoice);
-                                        if (numberChoiceParse == false)
+                                        if (numberChoiceParse == false || !cell[numberChoice].IsFree || numberChoice <= 0)
                                         {
                                             break;
                                         }
                                         cell[numberChoice].ChoicedPos = numberChoice - 1;
                                         cell[numberChoice].IsFree = false;
+                                        func.ReplaceElementTicTacToeArea(tictactoeArea, cell[numberChoice].ChoicedPos, turnStep);
+                                        break;
                                     }
-                                    while (numberChoiceParse == true && cell[numberChoice].ChoicedPos > 9 && cell[numberChoice].ChoicedPos < 1 && cell[numberChoice].IsFree == true);//Какой-то косяк с IsFree - не пашет
+                                    while (true);//Какой-то косяк с IsFree - не пашет
 
-                                    if (cell[numberChoice].IsFree == false)//Нужно разобраться - какая - то муть.
-                                    {
-                                        func.ReplaceElementTicTacToeArea(tictactoeArea, cell[numberChoice].ChoicedPos, symbolTurn);
-                                    }
-                                    else break;
-                                    //if (tictactoeArea[choicedPos])
+                                    //if (tictactoeAreacdPos>)
                                     //{
 
                                     //}
 
                                     Console.Clear();
-                                    symbolTurn = !symbolTurn;
+                                    turnStep = !turnStep;
+
                                     isResumeWork = true;
                                 }
                                 while (isResumeWork == true);

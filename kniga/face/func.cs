@@ -103,7 +103,7 @@ namespace kniga.face
 
         public static string[] CreateTicTacToeArea(int Scale)
         {
-            string[] TicTacToeArea = new string[(Scale*Scale)]; //Scale ^2 - Кол-во ячеек
+            string[] TicTacToeArea = new string[(Scale * Scale)]; //Scale ^2 - Кол-во ячеек
             for (int i = 0; i < (Scale * Scale); i++)
             {
                 TicTacToeArea[i] = "\u25A1";
@@ -125,17 +125,17 @@ namespace kniga.face
 
         public static string[] PlaceElementTicTacToeArea(string[] tictactoeArea, int cellNumber, bool selectedSymbol)
         {
-            
+
             return null;
         }
 
-        public static string[] ReplaceElementTicTacToeArea(string[] tictactoeArea, int cellNumber, bool selectedSymbol) //X - True , O - false
+        public static string[] ReplaceElementTicTacToeArea(string[] tictactoeArea, int cellNumber, bool turn)
         {
-            if (selectedSymbol == true)
-            { tictactoeArea[cellNumber] = "X"; }
-            if (selectedSymbol == false)
-            { tictactoeArea[cellNumber] = "O"; }
-            return tictactoeArea;
+                if (turn)
+                { tictactoeArea[cellNumber] = "X"; }
+                else
+                { tictactoeArea[cellNumber] = "O"; }
+                return tictactoeArea;
         }
     }
 }
