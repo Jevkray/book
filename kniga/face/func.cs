@@ -101,13 +101,14 @@ namespace kniga.face
 
         //КРЕСТИКИ-НОЛИКИ
 
-        public static string[] CreateTicTacToeArea()
+        public static string[] CreateTicTacToeArea(int Scale)
         {
-            string[] TicTacToeArea = new string[9];
-            for (int i = 0; i < 9; i++)
+            string[] TicTacToeArea = new string[(Scale*Scale)]; //Scale ^2 - Кол-во ячеек
+            for (int i = 0; i < (Scale * Scale); i++)
             {
                 TicTacToeArea[i] = "\u25A1";
             }
+            // User.TicTacToe.CellPosition cellPosition = new User.TicTacToe.CellPosition();
             return TicTacToeArea;
         }
 

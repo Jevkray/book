@@ -24,7 +24,7 @@ public class User
         public int Scale { get; set; } = 0;
         public int Height { get; set; } = 0;
         public int Width { get; set; } = 0;
-        public class CellPosition
+        public class Cell
             {
                 public int ChoicedPos { get; set; } = 0;
                 public bool IsFree { get; set; } = true;
