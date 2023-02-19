@@ -28,6 +28,7 @@ public class User
             {
                 public int ChoicedPos { get; set; } = 0;
                 public bool IsFree { get; set; } = true;
+                public string Sign { get; set; } = null;
             }
         public int Score { get; set; } = 0;
         public int Steps { get; set; } = 0;

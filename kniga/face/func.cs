@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using kniga.face.constants; //пишем чтобы сократить путь (раньше писали kniga.face.constants.errorMessages.ErrorMessage.... а теперь просто errorMessages...
-
+using kniga;
 
 namespace kniga.face
 {
@@ -123,18 +123,16 @@ namespace kniga.face
             return 0;
         }
 
-        public static string[] PlaceElementTicTacToeArea(string[] tictactoeArea, int cellNumber, bool selectedSymbol)
+        public static string CheckEndGameTicTacToe(int CellPosition,int Scale, string stepsMessage)
         {
-
-            return null;
+            stepsMessage = stepsMessage + Convert.ToString(CellPosition+1);
+            return stepsMessage;
         }
 
-        public static string[] ReplaceElementTicTacToeArea(string[] tictactoeArea, int cellNumber, bool turn)
+        public static string[] ReplaceElementTicTacToeArea(string[] tictactoeArea, int cellNumber, string Sign)
         {
-                if (turn)
-                { tictactoeArea[cellNumber] = "X"; }
-                else
-                { tictactoeArea[cellNumber] = "O"; }
+
+                tictactoeArea[cellNumber] = Sign; 
                 return tictactoeArea;
         }
     }

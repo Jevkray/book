@@ -280,6 +280,7 @@ namespace kniga
                     case "4":
                         {
                             {
+                                Console.Clear();
                                 //Крестики - нолики - игра
                                 User.TicTacToe tictactoe = new User.TicTacToe();
 
@@ -294,17 +295,23 @@ namespace kniga
 
                                 string[] tictactoeArea = func.CreateTicTacToeArea(tictactoe.Scale);
 
+                                string stepSign = "X";
                                 bool turnStep = true;
 
                                 bool isResumeWork;
 
+                                int length = 0;
                                 //Graphic interface
+                                string stepsMessage = null;
                                 do
                                 {
                                     Console.WriteLine("---------");
                                     func.DisplayTicTacToeArea(tictactoeArea);
                                     Console.WriteLine("---------");
+                                    Console.WriteLine("Turn: " + stepSign);
+                                    Console.WriteLine(stepsMessage);
 
+                                    length++;
                                     bool numberChoiceParse;
                                     int numberChoice = 0;
 
@@ -315,17 +322,30 @@ namespace kniga
                                         {
                                             break;
                                         }
+                                        if (turnStep)
+                                        {
+                                            cell[numberChoice].Sign = "X";
+                                            stepSign = "O";
+                                        }
+                                        else 
+                                        { 
+                                            cell[numberChoice].Sign = "O";
+                                            stepSign = "X";
+                                        }
+
                                         cell[numberChoice].ChoicedPos = numberChoice - 1;
                                         cell[numberChoice].IsFree = false;
 
-                                        func.ReplaceElementTicTacToeArea(tictactoeArea, cell[numberChoice].ChoicedPos, turnStep);
-                                        break; 
+                                        func.ReplaceElementTicTacToeArea(tictactoeArea, cell[numberChoice].ChoicedPos, cell[numberChoice].Sign);
+                                        stepsMessage = func.CheckEndGameTicTacToe(cell[numberChoice].ChoicedPos, tictactoe.Scale, stepsMessage);
+
+                                        turnStep = !turnStep;
+                                        break;
 
                                     }
                                     while (numberChoiceParse);
 
                                     Console.Clear();
-                                    turnStep = !turnStep;
                                     isResumeWork = true;
                                 }
                                 while (isResumeWork == true);
