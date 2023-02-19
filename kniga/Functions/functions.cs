@@ -170,8 +170,8 @@ namespace kniga.face
                 // преобразуем строку в байты
                 byte[] buffer = Encoding.Default.GetBytes(textLog);
                 // запись массива байтов в файл
-                await fstream.WriteAsync(buffer, 0, buffer.Length);
-                Console.WriteLine("\nЛоггирование данной сессии произведено.");
+                await fstream.WriteAsync(buffer);
+                Console.WriteLine("\nSession logs saved.");
             }
             return true;
         }
