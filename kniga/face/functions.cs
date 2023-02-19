@@ -8,7 +8,7 @@ using kniga;
 
 namespace kniga.face
 {
-    public class func
+    public class functions
     {
         public static int ParseToIntPositiveNumber(string input)
         {
@@ -154,19 +154,16 @@ namespace kniga.face
         public static async Task<bool> LoggingTicTacToeAsync(string stepsListX, string stepsListO, string winner)
         {
             string path = @"C:\Users\Kray\source\repos\kniga\kniga\Logs\LogsTicTacToe.txt";
-            string textLog;
+            string textLog = "Game at: " + DateTime.Now.ToString("G") + "\n" +
+                          "Steps of side 'X': '" + stepsListX + "'\n" +
+                          "Steps of side 'O': '" + stepsListO + "'\n" ;
+
             if (winner == "Draw")
             {
-            textLog = "Game at: " + DateTime.Now.ToString("G") + "\n" +
-                          "Steps of side 'X': '" + stepsListX + "'\n" +
-                          "Steps of side 'O': '" + stepsListO + "'\n" +
-                          "Draw\n\n";
+            textLog += "Draw\n\n";
             }
             else { 
-            textLog = "Game at: "+ DateTime.Now.ToString("G") + "\n" +
-                          "Steps of side 'X': '" + stepsListX + "'\n" +
-                          "Steps of side 'O': '" + stepsListO + "'\n" +
-                          "Winner is: '" + winner + "'\n\n";
+            textLog += "Winner is: '" + winner + "'\n\n";
             }
             using (FileStream fstream = new FileStream(path, FileMode.Append))
             {
@@ -174,7 +171,7 @@ namespace kniga.face
                 byte[] buffer = Encoding.Default.GetBytes(textLog);
                 // запись массива байтов в файл
                 await fstream.WriteAsync(buffer, 0, buffer.Length);
-                Console.WriteLine("\nЛоггирование данной игры произведено.");
+                Console.WriteLine("\nЛоггирование данной сессии произведено.");
             }
             return true;
         }

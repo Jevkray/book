@@ -46,7 +46,7 @@ namespace kniga
                             do // do .. while - выступает в качестве возвращения в начало , в случае ошибки
                             {
                                 Console.Write("Введите возраст персонажа: ");
-                                user.Age = func.ParseToIntPositiveNumber(Console.ReadLine());
+                                user.Age = functions.ParseToIntPositiveNumber(Console.ReadLine());
                             }
                             while (user.Age == 0);
 
@@ -84,7 +84,7 @@ namespace kniga
                                     }
                                     else
                                     {
-                                        confirmedNumberA = func.ParseToDoubleNumber(numberA);
+                                        confirmedNumberA = functions.ParseToDoubleNumber(numberA);
                                         EnterNumberA = true;
 
                                         if (confirmedNumberA == 0)
@@ -110,7 +110,7 @@ namespace kniga
                                     }
                                     else
                                     {
-                                        confirmedNumberB = func.ParseToDoubleNumber(numberB);
+                                        confirmedNumberB = functions.ParseToDoubleNumber(numberB);
                                         EnterNumberB = true;
 
                                         if (confirmedNumberB == 0)
@@ -155,7 +155,7 @@ namespace kniga
                                 do
                                 {
                                     Console.Write("Введите число которое вы хотите возвести в степень: ");
-                                    number = func.ParseToDoubleNumber(Console.ReadLine());
+                                    number = functions.ParseToDoubleNumber(Console.ReadLine());
 
                                 }
                                 while (number == 0);
@@ -165,7 +165,7 @@ namespace kniga
                                 do
                                 {
                                     Console.Write($"Введите степень в которую вы хотите возвести {number}: ");
-                                    degree = func.ParseToDoubleNumber(Console.ReadLine());
+                                    degree = functions.ParseToDoubleNumber(Console.ReadLine());
 
                                 }
                                 while (degree == 0);
@@ -213,19 +213,19 @@ namespace kniga
                                 do
                                 {
                                     Console.Write("Введите длинну стороны прямоугольника: ");
-                                    rectangle.Width = func.ParseToIntPositiveNumber(Console.ReadLine());
+                                    rectangle.Width = functions.ParseToIntPositiveNumber(Console.ReadLine());
                                 }
                                 while (rectangle.Width == 0);
 
                                 do
                                 {
                                     Console.Write("Введите высоту стороны прямоугольника: ");
-                                    rectangle.Height = func.ParseToIntPositiveNumber(Console.ReadLine());
+                                    rectangle.Height = functions.ParseToIntPositiveNumber(Console.ReadLine());
                                 }
                                 while (rectangle.Height == 0);
 
-                                string[,] rectangleArea = func.CreateRectangleArea(rectangle.Height, rectangle.Width);
-                                func.DisplayRectangleArea(rectangleArea);
+                                string[,] rectangleArea = functions.CreateRectangleArea(rectangle.Height, rectangle.Width);
+                                functions.DisplayRectangleArea(rectangleArea);
 
                                 Console.ReadKey();
                                 Console.Clear();
@@ -236,13 +236,13 @@ namespace kniga
                                 bool isResumeWork;
                                 do
                                 {
-                                    func.DisplayRectangleArea(rectangleArea);
+                                    functions.DisplayRectangleArea(rectangleArea);
 
                                     Console.WriteLine("Если хотите разместить область внутри основной нажмите Y");
                                     var a = Console.ReadKey().KeyChar;
                                     Console.Clear();
 
-                                    func.DisplayRectangleArea(rectangleArea);
+                                    functions.DisplayRectangleArea(rectangleArea);
 
                                     if (a == 'y' | a == 'Y')
                                     {
@@ -259,7 +259,7 @@ namespace kniga
                                         Console.WriteLine("Введите который будет основой области:");
                                         string symbolOfFillRectangleArea = (Console.ReadLine());
 
-                                        func.FillRectangleArea(rectangleArea, xStartCoord, yStartCoord, xEndCoord, yEndCoord, symbolOfFillRectangleArea);
+                                        functions.FillRectangleArea(rectangleArea, xStartCoord, yStartCoord, xEndCoord, yEndCoord, symbolOfFillRectangleArea);
 
                                         isResumeWork = true;
                                     }
@@ -294,7 +294,7 @@ namespace kniga
                                     cell.Add(new User.TicTacToe.Cell() { ChoicedPos = i, IsFree = true });
                                 }
 
-                                string[] tictactoeArea = func.CreateTicTacToeArea(tictactoe.Scale);
+                                string[] tictactoeArea = functions.CreateTicTacToeArea(tictactoe.Scale);
 
                                 string stepSign = "X";
                                 string stepSignPrew = null;
@@ -314,7 +314,7 @@ namespace kniga
                                 do
                                 {
                                     Console.WriteLine("---------");
-                                    func.DisplayTicTacToeArea(tictactoeArea);
+                                    functions.DisplayTicTacToeArea(tictactoeArea);
                                     Console.WriteLine("---------");
                                     Console.WriteLine("Turn: " + stepSign);
                                     Console.WriteLine("Steps player X: " + stepsListX);
@@ -345,19 +345,19 @@ namespace kniga
                                         cell[numberChoice].ChoicedPos = numberChoice - 1;
                                         cell[numberChoice].IsFree = false;
 
-                                        func.ReplaceElementTicTacToeArea(tictactoeArea, cell[numberChoice].ChoicedPos, cell[numberChoice].Sign);
+                                        functions.ReplaceElementTicTacToeArea(tictactoeArea, cell[numberChoice].ChoicedPos, cell[numberChoice].Sign);
                                         if (cell[numberChoice].Sign == "X")
                                         {
-                                            stepsListX = func.StepsMessageLog(cell[numberChoice].ChoicedPos, stepsListX);
+                                            stepsListX = functions.StepsMessageLog(cell[numberChoice].ChoicedPos, stepsListX);
                                             currentStepsList = stepsListX;
                                         }
                                         if (cell[numberChoice].Sign == "O")
                                         {
-                                            stepsListO = func.StepsMessageLog(cell[numberChoice].ChoicedPos, stepsListO);
+                                            stepsListO = functions.StepsMessageLog(cell[numberChoice].ChoicedPos, stepsListO);
                                             currentStepsList = stepsListO;
                                         }
 
-                                        endGameCheck = func.CheckEndGameTicTacToe(currentStepsList);
+                                        endGameCheck = functions.CheckEndGameTicTacToe(currentStepsList);
 
                                         stepCounter++;
                                         turnStep = !turnStep;
@@ -371,13 +371,13 @@ namespace kniga
                                     {
                                         Console.Clear();
                                         Console.WriteLine("---------");
-                                        func.DisplayTicTacToeArea(tictactoeArea);
+                                        functions.DisplayTicTacToeArea(tictactoeArea);
                                         Console.WriteLine("---------");
                                         Console.WriteLine("\nSteps player X: " + stepsListX);
                                         Console.WriteLine("Steps player O: " + stepsListO);
                                         Console.WriteLine("\nWinner is: " + stepSignPrew);
                                         isResumeWork = false;
-                                        func.LoggingTicTacToeAsync(stepsListX, stepsListO, stepSignPrew);
+                                        functions.LoggingTicTacToeAsync(stepsListX, stepsListO, stepSignPrew);
                                     }
                                     else
                                     {
@@ -390,13 +390,13 @@ namespace kniga
                                         {
                                             Console.Clear();
                                             Console.WriteLine("---------");
-                                            func.DisplayTicTacToeArea(tictactoeArea);
+                                            functions.DisplayTicTacToeArea(tictactoeArea);
                                             Console.WriteLine("---------");
                                             Console.WriteLine("\nSteps player X: " + stepsListX);
                                             Console.WriteLine("Steps player O: " + stepsListO);
                                             Console.WriteLine("\nDraw !");
                                             isResumeWork = false;
-                                            func.LoggingTicTacToeAsync(stepsListX, stepsListO, "Draw");
+                                            functions.LoggingTicTacToeAsync(stepsListX, stepsListO, "Draw");
                                         }
 
                                     }
