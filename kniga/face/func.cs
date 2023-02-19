@@ -122,18 +122,63 @@ namespace kniga.face
             }
             return 0;
         }
-
-        public static string CheckEndGameTicTacToe(int CellPosition,int Scale, string stepsMessage)
+        public static string StepsMessageLog(int CellPosition, string stepsMessage)
         {
-            stepsMessage = stepsMessage + Convert.ToString(CellPosition+1);
+            stepsMessage = stepsMessage + Convert.ToString(CellPosition + 1);
             return stepsMessage;
+        }
+
+        public static bool CheckEndGameTicTacToe(string stepsList)
+        {
+            if ((stepsList.Contains('1') && stepsList.Contains('2') && stepsList.Contains('3')) ||
+                (stepsList.Contains('4') && stepsList.Contains('5') && stepsList.Contains('6')) ||
+                (stepsList.Contains('7') && stepsList.Contains('8') && stepsList.Contains('9')) ||
+                (stepsList.Contains('1') && stepsList.Contains('4') && stepsList.Contains('7')) ||
+                (stepsList.Contains('2') && stepsList.Contains('5') && stepsList.Contains('8')) ||
+                (stepsList.Contains('3') && stepsList.Contains('6') && stepsList.Contains('9')) ||
+                (stepsList.Contains('1') && stepsList.Contains('5') && stepsList.Contains('9')) ||
+                (stepsList.Contains('3') && stepsList.Contains('5') && stepsList.Contains('7')))
+            {
+                return true;
+            }
+            return false;
         }
 
         public static string[] ReplaceElementTicTacToeArea(string[] tictactoeArea, int cellNumber, string Sign)
         {
 
-                tictactoeArea[cellNumber] = Sign; 
-                return tictactoeArea;
+            tictactoeArea[cellNumber] = Sign;
+            return tictactoeArea;
         }
+
+        public static async Task<bool> LoggingTicTacToeAsync(string stepsListX, string stepsListO, string winner)
+        {
+            string path = @"C:\Users\Kray\source\repos\kniga\kniga\Logs\LogsTicTacToe.txt";
+            string textLog;
+            if (winner == "Draw")
+            {
+            textLog = "Game at: " + DateTime.Now.ToString("G") + "\n" +
+                          "Steps of side 'X': '" + stepsListX + "'\n" +
+                          "Steps of side 'O': '" + stepsListO + "'\n" +
+                          "Draw\n\n";
+            }
+            else { 
+            textLog = "Game at: "+ DateTime.Now.ToString("G") + "\n" +
+                          "Steps of side 'X': '" + stepsListX + "'\n" +
+                          "Steps of side 'O': '" + stepsListO + "'\n" +
+                          "Winner is: '" + winner + "'\n\n";
+            }
+            using (FileStream fstream = new FileStream(path, FileMode.Append))
+            {
+                // преобразуем строку в байты
+                byte[] buffer = Encoding.Default.GetBytes(textLog);
+                // запись массива байтов в файл
+                await fstream.WriteAsync(buffer, 0, buffer.Length);
+                Console.WriteLine("\nЛоггирование данной игры произведено.");
+            }
+            return true;
+        }
+
+
     }
 }

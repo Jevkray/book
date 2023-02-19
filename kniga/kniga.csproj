@@ -8,4 +8,8 @@
     <Configurations>Debug;Release;ConEmu</Configurations>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Logs\" />
+  </ItemGroup>
+
 </Project>

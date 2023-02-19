@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -296,20 +297,28 @@ namespace kniga
                                 string[] tictactoeArea = func.CreateTicTacToeArea(tictactoe.Scale);
 
                                 string stepSign = "X";
+                                string stepSignPrew = null;
                                 bool turnStep = true;
+                                short stepCounter = 0;
 
                                 bool isResumeWork;
 
                                 int length = 0;
                                 //Graphic interface
-                                string stepsMessage = null;
+                                string stepsListX = null;
+                                string stepsListO = null;
+                                string currentStepsList = null;
+
+                                bool endGameCheck = false;
+
                                 do
                                 {
                                     Console.WriteLine("---------");
                                     func.DisplayTicTacToeArea(tictactoeArea);
                                     Console.WriteLine("---------");
                                     Console.WriteLine("Turn: " + stepSign);
-                                    Console.WriteLine(stepsMessage);
+                                    Console.WriteLine("Steps player X: " + stepsListX);
+                                    Console.WriteLine("Steps player O: " + stepsListO);
 
                                     length++;
                                     bool numberChoiceParse;
@@ -324,12 +333,12 @@ namespace kniga
                                         }
                                         if (turnStep)
                                         {
-                                            cell[numberChoice].Sign = "X";
+                                            cell[numberChoice].Sign = stepSignPrew = "X";
                                             stepSign = "O";
                                         }
-                                        else 
-                                        { 
-                                            cell[numberChoice].Sign = "O";
+                                        else
+                                        {
+                                            cell[numberChoice].Sign = stepSignPrew = "O";
                                             stepSign = "X";
                                         }
 
@@ -337,16 +346,61 @@ namespace kniga
                                         cell[numberChoice].IsFree = false;
 
                                         func.ReplaceElementTicTacToeArea(tictactoeArea, cell[numberChoice].ChoicedPos, cell[numberChoice].Sign);
-                                        stepsMessage = func.CheckEndGameTicTacToe(cell[numberChoice].ChoicedPos, tictactoe.Scale, stepsMessage);
+                                        if (cell[numberChoice].Sign == "X")
+                                        {
+                                            stepsListX = func.StepsMessageLog(cell[numberChoice].ChoicedPos, stepsListX);
+                                            currentStepsList = stepsListX;
+                                        }
+                                        if (cell[numberChoice].Sign == "O")
+                                        {
+                                            stepsListO = func.StepsMessageLog(cell[numberChoice].ChoicedPos, stepsListO);
+                                            currentStepsList = stepsListO;
+                                        }
 
+                                        endGameCheck = func.CheckEndGameTicTacToe(currentStepsList);
+
+                                        stepCounter++;
                                         turnStep = !turnStep;
+
                                         break;
 
                                     }
                                     while (numberChoiceParse);
 
-                                    Console.Clear();
-                                    isResumeWork = true;
+                                    if (endGameCheck)
+                                    {
+                                        Console.Clear();
+                                        Console.WriteLine("---------");
+                                        func.DisplayTicTacToeArea(tictactoeArea);
+                                        Console.WriteLine("---------");
+                                        Console.WriteLine("\nSteps player X: " + stepsListX);
+                                        Console.WriteLine("Steps player O: " + stepsListO);
+                                        Console.WriteLine("\nWinner is: " + stepSignPrew);
+                                        isResumeWork = false;
+                                        func.LoggingTicTacToeAsync(stepsListX, stepsListO, stepSignPrew);
+                                    }
+                                    else
+                                    {
+                                        if (stepCounter != 9)
+                                        {
+                                            Console.Clear();
+                                            isResumeWork = true;
+                                        }
+                                        else
+                                        {
+                                            Console.Clear();
+                                            Console.WriteLine("---------");
+                                            func.DisplayTicTacToeArea(tictactoeArea);
+                                            Console.WriteLine("---------");
+                                            Console.WriteLine("\nSteps player X: " + stepsListX);
+                                            Console.WriteLine("Steps player O: " + stepsListO);
+                                            Console.WriteLine("\nDraw !");
+                                            isResumeWork = false;
+                                            func.LoggingTicTacToeAsync(stepsListX, stepsListO, "Draw");
+                                        }
+
+                                    }
+
                                 }
                                 while (isResumeWork == true);
                             }
