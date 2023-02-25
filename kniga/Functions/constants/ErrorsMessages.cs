@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace kniga.face.constants
+namespace kniga.Functions.constants
 {
     public class errorMessages
     {
