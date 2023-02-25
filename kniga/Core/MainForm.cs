@@ -5,149 +5,40 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using kniga.Functions;
+using kniga.Core.Pages;
 namespace kniga.Core
 
 {
-    class Program
+    class MainForm
     {
         public static void Main()
         {
             Console.OutputEncoding = Encoding.UTF8;
             {
-                Console.WriteLine("Нажмите F если хотите использовать быстрый режим, S - если медленный");
-                var ModeChoice = Console.ReadKey().KeyChar;
-                string ModeChiceSwitch = "0";
-                if (ModeChoice == 'f' | ModeChoice == 'F')
+
+                User user = new User();
+                user.ModeChoice = CoreFunctions.ModeChoosing();
+
+                switch (CoreFunctions.PageChoosing(user.ModeChoice))
                 {
-                    Console.Clear();
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("Быстрый переход");
-                    Console.Write("Введите номер страницы на которую желаете перейти:");
-                    ModeChiceSwitch = Console.ReadLine();
-                    ModeChoice = 'F';
-                }
-                if (ModeChoice == 's' | ModeChoice == 'S')
-                {
-                    ModeChiceSwitch = "0";
-                }
-                switch (ModeChiceSwitch)
-                {
-                    case "0":
+                    case 1:
                         {
-                            //Страница привествия
-                            Console.Clear();
-                            Console.Write("Введите имя персонажа за которого вы будете играть: ");
-                            string? name = Console.ReadLine();
-
-                            User user = new User();
-                            user.Name = name;
-                            Console.Clear();
-
-                            do // do .. while - выступает в качестве возвращения в начало , в случае ошибки
-                            {
-                                Console.Write("Введите возраст персонажа: ");
-                                user.Age = functions.ParseToIntPositiveNumber(Console.ReadLine());
-                            }
-                            while (user.Age == 0);
-
-                            Console.Clear();
-
-                            user.Print();
-
-                            Console.ReadKey();
-                            Console.Clear();
-                            if (ModeChoice == 'F') { break; }
+                            Page1.Run(user);
+                            if (user.ModeChoice) { break; }
                         }
-                        goto case "1";
+                        goto case 2;
 
-                    case "1":
+                    case 2:
                         {
-                            {
-                                //Страница номер 1 
-                                Console.ForegroundColor = ConsoleColor.Blue;
-                                Console.WriteLine("Страница №1, больше - меньше\n");
-                                Console.ResetColor();
-
-                                bool EnterNumberA = false;
-                                double confirmedNumberA = 0;
-                                Console.ForegroundColor = ConsoleColor.Blue;
-                                Console.WriteLine("Введите числа для сравнения ");
-                                do
-                                {
-                                    Console.ForegroundColor = ConsoleColor.Green;
-                                    Console.Write("Число a = ");
-                                    string? numberA = Console.ReadLine();
-                                    if (numberA == "0")
-                                    {
-                                        EnterNumberA = true;
-                                        confirmedNumberA = 0;
-                                    }
-                                    else
-                                    {
-                                        confirmedNumberA = functions.ParseToDoubleNumber(numberA);
-                                        EnterNumberA = true;
-
-                                        if (confirmedNumberA == 0)
-                                        {
-                                            EnterNumberA = false;
-                                        }
-                                    }
-                                }
-                                while (EnterNumberA == false);
-                                Console.Clear();
-
-                                bool EnterNumberB = false;
-                                double confirmedNumberB = 0;
-                                do
-                                {
-                                    Console.ForegroundColor = ConsoleColor.Green;
-                                    Console.Write("Число b = ");
-                                    string? numberB = Console.ReadLine();
-                                    if (numberB == "0")
-                                    {
-                                        EnterNumberB = true;
-                                        confirmedNumberB = 0;
-                                    }
-                                    else
-                                    {
-                                        confirmedNumberB = functions.ParseToDoubleNumber(numberB);
-                                        EnterNumberB = true;
-
-                                        if (confirmedNumberB == 0)
-                                        {
-                                            EnterNumberB = false;
-                                        }
-                                    }
-                                }
-                                while (EnterNumberB == false);
-                                Console.Clear();
-
-                                {
-                                    if (confirmedNumberA == confirmedNumberB)
-                                    {
-                                        Console.WriteLine("Число a = b");
-                                    }
-                                    if (confirmedNumberA > confirmedNumberB)
-                                    {
-                                        Console.WriteLine("Число a > b");
-                                    }
-                                    if (confirmedNumberA < confirmedNumberB)
-                                    {
-                                        Console.WriteLine("Число b > a");
-                                    }
-
-                                    Console.ReadKey();
-                                    Console.Clear();
-                                }
-                            }
-                            if (ModeChoice == 'F') { break; }
+                            Page2.Run();
+                            if (user.ModeChoice) { break; }
                         }
-                        goto case "2";
+                        goto case 3;
 
-                    case "2":
+                    case 3:
                         {
                             {
-                                //Сраница номер 2
+                                //Сраница номер 3
                                 Console.ForegroundColor = ConsoleColor.Green;
                                 Console.WriteLine("Страница №2, Степени числа до \"n\" (В горочку) \n");
 
@@ -155,7 +46,7 @@ namespace kniga.Core
                                 do
                                 {
                                     Console.Write("Введите число которое вы хотите возвести в степень: ");
-                                    number = functions.ParseToDoubleNumber(Console.ReadLine());
+                                    number = Functions.CoreFunctions.ParseToDoubleNumber(Console.ReadLine());
 
                                 }
                                 while (number == 0);
@@ -165,7 +56,7 @@ namespace kniga.Core
                                 do
                                 {
                                     Console.Write($"Введите степень в которую вы хотите возвести {number}: ");
-                                    degree = functions.ParseToDoubleNumber(Console.ReadLine());
+                                    degree = Functions.CoreFunctions.ParseToDoubleNumber(Console.ReadLine());
 
                                 }
                                 while (degree == 0);
@@ -197,11 +88,11 @@ namespace kniga.Core
                                 Console.Clear();
 
                             }
-                            if (ModeChoice == 'F') { break; }
+                            if (user.ModeChoice) { break; }
                         }
-                        goto case "3";
+                        goto case 4;
 
-                    case "3":
+                    case 4:
                         {
                             {
                                 User.Rectangle rectangle = new User.Rectangle();
@@ -213,19 +104,19 @@ namespace kniga.Core
                                 do
                                 {
                                     Console.Write("Введите длинну стороны прямоугольника: ");
-                                    rectangle.Width = functions.ParseToIntPositiveNumber(Console.ReadLine());
+                                    rectangle.Width = Functions.CoreFunctions.ParseToIntPositiveNumber(Console.ReadLine());
                                 }
                                 while (rectangle.Width == 0);
 
                                 do
                                 {
                                     Console.Write("Введите высоту стороны прямоугольника: ");
-                                    rectangle.Height = functions.ParseToIntPositiveNumber(Console.ReadLine());
+                                    rectangle.Height = Functions.CoreFunctions.ParseToIntPositiveNumber(Console.ReadLine());
                                 }
                                 while (rectangle.Height == 0);
 
-                                string[,] rectangleArea = functions.CreateRectangleArea(rectangle.Height, rectangle.Width);
-                                functions.DisplayRectangleArea(rectangleArea);
+                                string[,] rectangleArea = Functions.CoreFunctions.CreateRectangleArea(rectangle.Height, rectangle.Width);
+                                Functions.CoreFunctions.DisplayRectangleArea(rectangleArea);
 
                                 Console.ReadKey();
                                 Console.Clear();
@@ -236,13 +127,13 @@ namespace kniga.Core
                                 bool isResumeWork;
                                 do
                                 {
-                                    functions.DisplayRectangleArea(rectangleArea);
+                                    Functions.CoreFunctions.DisplayRectangleArea(rectangleArea);
 
                                     Console.WriteLine("Если хотите разместить область внутри основной нажмите Y");
                                     var a = Console.ReadKey().KeyChar;
                                     Console.Clear();
 
-                                    functions.DisplayRectangleArea(rectangleArea);
+                                    Functions.CoreFunctions.DisplayRectangleArea(rectangleArea);
 
                                     if (a == 'y' | a == 'Y')
                                     {
@@ -259,7 +150,7 @@ namespace kniga.Core
                                         Console.WriteLine("Введите который будет основой области:");
                                         string symbolOfFillRectangleArea = Console.ReadLine();
 
-                                        functions.FillRectangleArea(rectangleArea, xStartCoord, yStartCoord, xEndCoord, yEndCoord, symbolOfFillRectangleArea);
+                                        Functions.CoreFunctions.FillRectangleArea(rectangleArea, xStartCoord, yStartCoord, xEndCoord, yEndCoord, symbolOfFillRectangleArea);
 
                                         isResumeWork = true;
                                     }
@@ -274,11 +165,11 @@ namespace kniga.Core
                                 Console.Clear();
                                 Console.WriteLine("Конец.");
                             }
-                            if (ModeChoice == 'F') { break; }
+                            if (user.ModeChoice) { break; }
                         }
-                        goto case "4";
+                        goto case 5;
 
-                    case "4":
+                    case 5:
                         {
                             {
                                 Console.Clear();
@@ -294,7 +185,7 @@ namespace kniga.Core
                                     cell.Add(new User.TicTacToe.Cell() { ChoicedPos = i, IsFree = true });
                                 }
 
-                                string[] tictactoeArea = functions.CreateTicTacToeArea(tictactoe.Scale);
+                                string[] tictactoeArea = Functions.CoreFunctions.CreateTicTacToeArea(tictactoe.Scale);
 
                                 string stepSign = "X";
                                 string stepSignPrew = null;
@@ -314,7 +205,7 @@ namespace kniga.Core
                                 do
                                 {
                                     Console.WriteLine("---------");
-                                    functions.DisplayTicTacToeArea(tictactoeArea);
+                                    Functions.CoreFunctions.DisplayTicTacToeArea(tictactoeArea);
                                     Console.WriteLine("---------");
                                     Console.WriteLine("Turn: " + stepSign);
                                     Console.WriteLine("Steps player X: " + stepsListX);
@@ -345,19 +236,19 @@ namespace kniga.Core
                                         cell[numberChoice].ChoicedPos = numberChoice - 1;
                                         cell[numberChoice].IsFree = false;
 
-                                        functions.ReplaceElementTicTacToeArea(tictactoeArea, cell[numberChoice].ChoicedPos, cell[numberChoice].Sign);
+                                        Functions.CoreFunctions.ReplaceElementTicTacToeArea(tictactoeArea, cell[numberChoice].ChoicedPos, cell[numberChoice].Sign);
                                         if (cell[numberChoice].Sign == "X")
                                         {
-                                            stepsListX = functions.StepsMessageLog(cell[numberChoice].ChoicedPos, stepsListX);
+                                            stepsListX = Functions.CoreFunctions.StepsMessageLog(cell[numberChoice].ChoicedPos, stepsListX);
                                             currentStepsList = stepsListX;
                                         }
                                         if (cell[numberChoice].Sign == "O")
                                         {
-                                            stepsListO = functions.StepsMessageLog(cell[numberChoice].ChoicedPos, stepsListO);
+                                            stepsListO = Functions.CoreFunctions.StepsMessageLog(cell[numberChoice].ChoicedPos, stepsListO);
                                             currentStepsList = stepsListO;
                                         }
 
-                                        endGameCheck = functions.CheckEndGameTicTacToe(currentStepsList);
+                                        endGameCheck = Functions.CoreFunctions.CheckEndGameTicTacToe(currentStepsList);
 
                                         stepCounter++;
                                         turnStep = !turnStep;
@@ -371,13 +262,13 @@ namespace kniga.Core
                                     {
                                         Console.Clear();
                                         Console.WriteLine("---------");
-                                        functions.DisplayTicTacToeArea(tictactoeArea);
+                                        Functions.CoreFunctions.DisplayTicTacToeArea(tictactoeArea);
                                         Console.WriteLine("---------");
                                         Console.WriteLine("\nSteps player X: " + stepsListX);
                                         Console.WriteLine("Steps player O: " + stepsListO);
                                         Console.WriteLine("\nWinner is: " + stepSignPrew);
                                         isResumeWork = false;
-                                        functions.LoggingTicTacToeAsync(stepsListX, stepsListO, stepSignPrew);
+                                        Functions.CoreFunctions.LoggingTicTacToeAsync(stepsListX, stepsListO, stepSignPrew);
                                     }
                                     else
                                     {
@@ -390,13 +281,13 @@ namespace kniga.Core
                                         {
                                             Console.Clear();
                                             Console.WriteLine("---------");
-                                            functions.DisplayTicTacToeArea(tictactoeArea);
+                                            Functions.CoreFunctions.DisplayTicTacToeArea(tictactoeArea);
                                             Console.WriteLine("---------");
                                             Console.WriteLine("\nSteps player X: " + stepsListX);
                                             Console.WriteLine("Steps player O: " + stepsListO);
                                             Console.WriteLine("\nDraw !");
                                             isResumeWork = false;
-                                            functions.LoggingTicTacToeAsync(stepsListX, stepsListO, "Draw");
+                                            Functions.CoreFunctions.LoggingTicTacToeAsync(stepsListX, stepsListO, "Draw");
                                         }
 
                                     }
@@ -404,11 +295,11 @@ namespace kniga.Core
                                 }
                                 while (isResumeWork == true);
                             }
-                            if (ModeChoice == 'F') { break; }
+                            if (user.ModeChoice) { break; }
                         }
                         break;
 
-                    case "5":
+                    case 0:
                         {
                             //Тупо тестовый
                         }

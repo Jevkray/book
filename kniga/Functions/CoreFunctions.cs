@@ -8,8 +8,57 @@ using kniga.constants;
 
 namespace kniga.Functions
 {
-    public class functions
+    public class CoreFunctions
     {
+        public static int PageChoosing(bool ModeChoice)
+        {
+            
+            int PageChoiceSwitch = 0;
+            if (ModeChoice)
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("Быстрый переход");
+                Console.Write("Введите номер страницы на которую желаете перейти:");
+                PageChoiceSwitch = ParseToIntNumber(Console.ReadLine());
+            }
+
+            if (!ModeChoice)
+            {
+                PageChoiceSwitch = 1;
+                Console.Clear();
+            }
+
+            return PageChoiceSwitch;
+        }
+
+        public static bool ModeChoosing()
+        {
+            char ReadModeChoice;
+            do
+            {
+                Console.WriteLine("Нажмите F если хотите использовать быстрый режим, S - если медленный");
+                ReadModeChoice = Console.ReadKey().KeyChar;
+
+                if (ReadModeChoice == 'f' | ReadModeChoice == 'F')
+                {
+                    return true;
+                }
+
+                if (ReadModeChoice == 's' | ReadModeChoice == 'S')
+                {
+                    return false;
+                }
+
+                Console.Clear();
+
+            }
+            while (ReadModeChoice != 'f' | ReadModeChoice != 'F' | ReadModeChoice != 's' | ReadModeChoice != 'S');
+
+            throw new Exception("Something going wrong");
+
+        }
+
         public static int ParseToIntPositiveNumber(string input)
         {
             bool result = int.TryParse(input, out int number);
@@ -156,14 +205,15 @@ namespace kniga.Functions
             string path = @"C:\Users\Kray\source\repos\kniga\kniga\Logs\LogsTicTacToe.txt";
             string textLog = "Game at: " + DateTime.Now.ToString("G") + "\n" +
                           "Steps of side 'X': '" + stepsListX + "'\n" +
-                          "Steps of side 'O': '" + stepsListO + "'\n" ;
+                          "Steps of side 'O': '" + stepsListO + "'\n";
 
             if (winner == "Draw")
             {
-            textLog += "Draw\n\n";
+                textLog += "Draw\n\n";
             }
-            else { 
-            textLog += "Winner is: '" + winner + "'\n\n";
+            else
+            {
+                textLog += "Winner is: '" + winner + "'\n\n";
             }
             using (FileStream fstream = new FileStream(path, FileMode.Append))
             {

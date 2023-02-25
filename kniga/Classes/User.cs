@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using kniga.Functions;
-public class User 
+public class User
 {
-    public string Name = "Undefined";   
+    public bool ModeChoice = true; //True - fast mode // False - slow mode
+    public string Name = "Undefined";
     public int Age = 0;
     public void Print()
     {
@@ -25,11 +26,11 @@ public class User
         public int Height { get; set; } = 0;
         public int Width { get; set; } = 0;
         public class Cell
-            {
-                public int ChoicedPos { get; set; } = 0;
-                public bool IsFree { get; set; } = true;
-                public string Sign { get; set; } = null;
-            }
+        {
+            public int ChoicedPos { get; set; } = 0;
+            public bool IsFree { get; set; } = true;
+            public string? Sign { get; set; } = null;
+        }
         public int Score { get; set; } = 0;
         public int Steps { get; set; } = 0;
     }
