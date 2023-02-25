@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace kniga.Core.Pages
 {
-    public static class StartPage  
+    public static class Page1
     {
         static string InputValue(string inputMessage)
         {
