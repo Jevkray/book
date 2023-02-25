@@ -5,14 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using kniga.Functions;
-namespace kniga
+namespace kniga.Core
 
 {
     class Program
     {
         public static void Main()
         {
-            Console.OutputEncoding = System.Text.Encoding.UTF8;
+            Console.OutputEncoding = Encoding.UTF8;
             {
                 Console.WriteLine("Нажмите F если хотите использовать быстрый режим, S - если медленный");
                 var ModeChoice = Console.ReadKey().KeyChar;
@@ -247,17 +247,17 @@ namespace kniga
                                     if (a == 'y' | a == 'Y')
                                     {
                                         Console.WriteLine("Введите начальную X координату");
-                                        int xStartCoord = Int32.Parse(Console.ReadLine()) - 1;
+                                        int xStartCoord = int.Parse(Console.ReadLine()) - 1;
                                         Console.WriteLine("Введите начальную Y координату");
-                                        int yStartCoord = Int32.Parse(Console.ReadLine()) - 1;
+                                        int yStartCoord = int.Parse(Console.ReadLine()) - 1;
 
                                         Console.WriteLine("Введите конечную X координату");
-                                        int xEndCoord = Int32.Parse(Console.ReadLine()) - 1;
+                                        int xEndCoord = int.Parse(Console.ReadLine()) - 1;
                                         Console.WriteLine("Введите конечную Y координату");
-                                        int yEndCoord = Int32.Parse(Console.ReadLine()) - 1;
+                                        int yEndCoord = int.Parse(Console.ReadLine()) - 1;
 
                                         Console.WriteLine("Введите который будет основой области:");
-                                        string symbolOfFillRectangleArea = (Console.ReadLine());
+                                        string symbolOfFillRectangleArea = Console.ReadLine();
 
                                         functions.FillRectangleArea(rectangleArea, xStartCoord, yStartCoord, xEndCoord, yEndCoord, symbolOfFillRectangleArea);
 
@@ -326,7 +326,7 @@ namespace kniga
 
                                     do
                                     {
-                                        numberChoiceParse = Int32.TryParse(Console.ReadKey().KeyChar.ToString(), out numberChoice);
+                                        numberChoiceParse = int.TryParse(Console.ReadKey().KeyChar.ToString(), out numberChoice);
                                         if (!numberChoiceParse || !cell[numberChoice].IsFree || numberChoice <= 0)
                                         {
                                             break;

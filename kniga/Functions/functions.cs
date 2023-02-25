@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using kniga.Functions.constants; //пишем чтобы сократить путь (раньше писали kniga.face.constants.errorMessages.ErrorMessage.... а теперь просто errorMessages...
 using kniga;
+using kniga.constants;
 
 namespace kniga.Functions
 {
@@ -13,7 +13,7 @@ namespace kniga.Functions
         public static int ParseToIntPositiveNumber(string input)
         {
             bool result = int.TryParse(input, out int number);
-            if (result == true && number > 0)
+            if (result && number > 0)
             {
                 return number;
             }
@@ -27,7 +27,7 @@ namespace kniga.Functions
         public static int ParseToIntNumber(string input)
         {
             bool result = int.TryParse(input, out int number);
-            if (result == true)
+            if (result)
             {
                 return number;
             }
@@ -41,7 +41,7 @@ namespace kniga.Functions
         public static double ParseToDoubleNumber(string input)
         {
             bool result = double.TryParse(input, out double number);
-            if (result == true)
+            if (result)
             {
                 return number;
             }
