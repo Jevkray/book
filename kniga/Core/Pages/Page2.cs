@@ -12,7 +12,7 @@ namespace kniga.Core.Pages
         {
             //Страница номер 2 
             Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine("Страница №1, больше - меньше\n");
+            Console.WriteLine("Страница №2, больше - меньше\n");
             Console.ResetColor();
 
             bool EnterNumberA = false;

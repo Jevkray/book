@@ -12,7 +12,7 @@ namespace kniga.Core.Pages
         {
             //Сраница номер 3
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Страница №2, Степени числа до \"n\" (В горочку) \n");
+            Console.WriteLine("Страница №3, Степени числа до \"n\" (В горочку) \n");
 
             double number;
             do

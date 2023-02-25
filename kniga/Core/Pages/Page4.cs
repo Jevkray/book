@@ -12,7 +12,7 @@ namespace kniga.Core.Pages
         {
             User.Rectangle rectangle = new User.Rectangle();
 
-            Console.WriteLine("Страница 3 Fill the Area");
+            Console.WriteLine("Страница 4 Fill the Area");
             Console.ReadKey();
             Console.Clear();
 
