@@ -25,7 +25,7 @@ namespace kniga.Core.Pages
         public static void Run()
         {
             Console.Clear();
-            
+
             User.Rectangle rectangle = new User.Rectangle();
 
             Console.WriteLine("Страница 4 Fill the Area");

@@ -162,9 +162,9 @@ namespace kniga.Functions
             return TicTacToeArea;
         }
 
-        public static int DisplayTicTacToeArea(string[] tictactoeArea)
+        public static int DisplayTicTacToeArea(string[] tictactoeArea, int Scale)
         {
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 9; i++) //Убрать - магические - числа
             {
                 Console.Write($" {tictactoeArea[i]} ");
                 if (i % 3 == 2)
