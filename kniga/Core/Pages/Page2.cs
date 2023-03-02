@@ -3,84 +3,76 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using kniga.Functions;
 
 namespace kniga.Core.Pages
 {
     public static class Page2
     {
+        private const string NameA= "A";
+        private const string NameB = "B";
+
+        public static void ChangeColorAndText(ConsoleColor color, string message)
+        {
+            Console.ForegroundColor = color;
+            Console.WriteLine(message);
+        }
+
+        public static double interNumberAndParseToDouble(string nameOfIndex)
+        {
+            bool EnterNumber = false;
+            double confirmedNumber = 0;
+
+            do
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write("Число " + nameOfIndex + " = ");
+                string number = Console.ReadLine();
+                if (number == "0")
+                {
+                    EnterNumber = true;
+                    confirmedNumber = 0;
+                }
+                else
+                {
+                    confirmedNumber = CoreFunctions.ParseToDoubleNumber(number);
+                    EnterNumber = true;
+
+                    if (confirmedNumber == 0)
+                    {
+                        EnterNumber = false;
+                    }
+                }
+            }
+            while (EnterNumber == false);
+            Console.Clear();
+
+            return confirmedNumber;
+        }
+
         public static void Run()
         {
-            //Страница номер 2 
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine("Страница №2, больше - меньше\n");
-            Console.ResetColor();
-
-            bool EnterNumberA = false;
-            double confirmedNumberA = 0;
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine("Введите числа для сравнения ");
-            do
-            {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.Write("Число a = ");
-                string? numberA = Console.ReadLine();
-                if (numberA == "0")
-                {
-                    EnterNumberA = true;
-                    confirmedNumberA = 0;
-                }
-                else
-                {
-                    confirmedNumberA = Functions.CoreFunctions.ParseToDoubleNumber(numberA);
-                    EnterNumberA = true;
-
-                    if (confirmedNumberA == 0)
-                    {
-                        EnterNumberA = false;
-                    }
-                }
-            }
-            while (EnterNumberA == false);
             Console.Clear();
 
-            bool EnterNumberB = false;
-            double confirmedNumberB = 0;
-            do
-            {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.Write("Число b = ");
-                string? numberB = Console.ReadLine();
-                if (numberB == "0")
-                {
-                    EnterNumberB = true;
-                    confirmedNumberB = 0;
-                }
-                else
-                {
-                    confirmedNumberB = Functions.CoreFunctions.ParseToDoubleNumber(numberB);
-                    EnterNumberB = true;
+            ChangeColorAndText(ConsoleColor.DarkBlue, "Страница №2, больше - меньше \n");
 
-                    if (confirmedNumberB == 0)
-                    {
-                        EnterNumberB = false;
-                    }
-                }
-            }
-            while (EnterNumberB == false);
-            Console.Clear();
+            ChangeColorAndText(ConsoleColor.Magenta, "Введите числа для сравнения");
+
+            double confirmedNumberA = interNumberAndParseToDouble(NameA);
+            double confirmedNumberB = interNumberAndParseToDouble(NameB);
 
             {
                 if (confirmedNumberA == confirmedNumberB)
                 {
-                    Console.WriteLine("Число a = b");
+                    Console.WriteLine("Число A = B");
                 }
                 if (confirmedNumberA > confirmedNumberB)
                 {
-                    Console.WriteLine("Число a > b");
+                    Console.WriteLine("Число A > B");
                 }
                 if (confirmedNumberA < confirmedNumberB)
                 {
-                    Console.WriteLine("Число b > a");
+                    Console.WriteLine("Число B > A");
                 }
 
                 Console.ReadKey();
@@ -89,3 +81,4 @@ namespace kniga.Core.Pages
         }
     }
 }
+
