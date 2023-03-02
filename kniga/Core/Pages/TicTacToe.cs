@@ -111,6 +111,7 @@ namespace kniga.Core.Pages
                 {
                     Console.Clear();
                     PrintInterface(tictactoeArea, tictactoe.Scale, stepSign, stepsListX, stepsListO);
+                    Console.WriteLine("\nWinner is: " + stepSignPrew);
 
                     isResumeWork = false;
                     CoreFunctions.LoggingTicTacToeAsync(stepsListX, stepsListO, stepSignPrew);
