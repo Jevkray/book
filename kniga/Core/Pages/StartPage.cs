@@ -9,7 +9,7 @@ namespace kniga.Core.Pages
 {
     public static class StartPage
     {
-        public static string InputValue(string inputMessage)
+        public static string EnterStringValue(string inputMessage)
         {
             Console.Write(inputMessage);
             string value = Console.ReadLine();
@@ -17,12 +17,12 @@ namespace kniga.Core.Pages
         }
         public static void Run(User user)
         {
-            user.Name = InputValue("Введите ваше имя: ");
+            user.Name = EnterStringValue("Введите ваше имя: ");
             Console.Clear();
 
             do
             {
-                user.Age = Functions.CoreFunctions.ParseToIntPositiveNumber(InputValue("Введите возраст персонажа: "));
+                user.Age = Functions.CoreFunctions.ParseToIntPositiveNumber(EnterStringValue("Введите возраст персонажа: "));
             }
             while (user.Age == 0);
 

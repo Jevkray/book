@@ -133,7 +133,7 @@ namespace kniga.Functions
             return 0;
         }
 
-        public static string[,] FillRectangleArea(string[,] rectangleArea, int xStartCoord, int yStartCoord, int xEndCoord, int yEndCoord, string fillSymbol)
+        public static string[,] FillRectangleArea(string[,] rectangleArea, int xStartCoord, int yStartCoord, int xEndCoord, int yEndCoord, char fillSymbol)
         {
             Console.Clear();
             for (int i = 0; i < rectangleArea.GetLength(0); i++)
@@ -142,7 +142,7 @@ namespace kniga.Functions
                 {
                     if (i >= yStartCoord && i <= yEndCoord && j >= xStartCoord && j <= xEndCoord)
                     {
-                        rectangleArea[i, j] = fillSymbol;
+                        rectangleArea[i, j] = Convert.ToString(fillSymbol);
                     }
                 }
             }

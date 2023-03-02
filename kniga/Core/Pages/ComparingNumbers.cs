@@ -23,7 +23,7 @@ namespace kniga.Core.Pages
 
             do
             {
-                string number = StartPage.InputValue(message);
+                string number = StartPage.EnterStringValue(message);
                 if (number == "0")
                 {
                     EnterNumber = true;

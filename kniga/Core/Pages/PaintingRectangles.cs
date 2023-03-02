@@ -3,13 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using kniga.Functions;
 
 namespace kniga.Core.Pages
 {
     public static class PaintingRectangles
     {
+        public static int EnterIntValue(string message)
+        {
+            Console.Write(message);
+            int value = CoreFunctions.ParseToIntNumber(Console.ReadLine());
+            return value;
+        }
+        public static char EnterCharValue(string inputMessage)
+        {
+            Console.Write(inputMessage);
+            char value = Console.ReadKey().KeyChar;
+            return value;
+        }
+
         public static void Run()
         {
+            Console.Clear();
+            
             User.Rectangle rectangle = new User.Rectangle();
 
             Console.WriteLine("Страница 4 Fill the Area");
@@ -18,23 +34,22 @@ namespace kniga.Core.Pages
 
             do
             {
-                Console.Write("Введите длинну стороны прямоугольника: ");
-                rectangle.Width = Functions.CoreFunctions.ParseToIntPositiveNumber(Console.ReadLine());
+                rectangle.Width = EnterIntValue("Введите длинну стороны прямоугольника: ");
             }
-            while (rectangle.Width == 0);
+            while (rectangle.Width <= 0);
 
             do
             {
-                Console.Write("Введите высоту стороны прямоугольника: ");
-                rectangle.Height = Functions.CoreFunctions.ParseToIntPositiveNumber(Console.ReadLine());
+                rectangle.Height = EnterIntValue("Введите длинну стороны прямоугольника: ");
             }
-            while (rectangle.Height == 0);
+            while (rectangle.Height <= 0);
 
-            string[,] rectangleArea = Functions.CoreFunctions.CreateRectangleArea(rectangle.Height, rectangle.Width);
-            Functions.CoreFunctions.DisplayRectangleArea(rectangleArea);
+            string[,] rectangleArea = CoreFunctions.CreateRectangleArea(rectangle.Height, rectangle.Width);
 
+            CoreFunctions.DisplayRectangleArea(rectangleArea);
             Console.ReadKey();
             Console.Clear();
+
             Console.WriteLine("Рисование областей в основной");
             Console.ReadKey();
             Console.Clear();
@@ -42,30 +57,25 @@ namespace kniga.Core.Pages
             bool isResumeWork;
             do
             {
-                Functions.CoreFunctions.DisplayRectangleArea(rectangleArea);
+                CoreFunctions.DisplayRectangleArea(rectangleArea);
 
-                Console.WriteLine("Если хотите разместить область внутри основной нажмите Y");
-                var a = Console.ReadKey().KeyChar;
+                var a = EnterCharValue("\nЕсли хотите разместить область внутри основной нажмите Y");
                 Console.Clear();
 
-                Functions.CoreFunctions.DisplayRectangleArea(rectangleArea);
+                CoreFunctions.DisplayRectangleArea(rectangleArea);
 
                 if (a == 'y' | a == 'Y')
                 {
-                    Console.WriteLine("Введите начальную X координату");
-                    int xStartCoord = int.Parse(Console.ReadLine()) - 1;
-                    Console.WriteLine("Введите начальную Y координату");
-                    int yStartCoord = int.Parse(Console.ReadLine()) - 1;
 
-                    Console.WriteLine("Введите конечную X координату");
-                    int xEndCoord = int.Parse(Console.ReadLine()) - 1;
-                    Console.WriteLine("Введите конечную Y координату");
-                    int yEndCoord = int.Parse(Console.ReadLine()) - 1;
+                    int xStartCoord = EnterIntValue("Введите начальную X координату: \n") - 1;
+                    int yStartCoord = EnterIntValue("Введите начальную Y координату: \n") - 1;
 
-                    Console.WriteLine("Введите который будет основой области:");
-                    string symbolOfFillRectangleArea = Console.ReadLine();
+                    int xEndCoord = EnterIntValue("Введите конечную X координату: \n") - 1;
+                    int yEndCoord = EnterIntValue("Введите конечную Y координату: \n") - 1;
 
-                    Functions.CoreFunctions.FillRectangleArea(rectangleArea, xStartCoord, yStartCoord, xEndCoord, yEndCoord, symbolOfFillRectangleArea);
+                    char symbolOfFillRectangleArea = EnterCharValue("Нажмите на символ которым хотите заполить область: \n");
+
+                    CoreFunctions.FillRectangleArea(rectangleArea, xStartCoord, yStartCoord, xEndCoord, yEndCoord, symbolOfFillRectangleArea);
 
                     isResumeWork = true;
                 }
