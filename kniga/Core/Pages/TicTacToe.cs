@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace kniga.Core.Pages
 {
-    public static class Page5
+    public static class TicTacToe
     {
         public static void Run()
         {

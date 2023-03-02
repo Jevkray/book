@@ -23,40 +23,50 @@ namespace kniga.Core
                 {
                     case 1:
                         {
-                            Page1.Run(user);
+                            StartPage.Run(user);
+                            Console.ReadKey();
+                            Console.Clear();
                             if (user.ModeChoice) { break; }
                         }
                         goto case 2;
 
                     case 2:
                         {
-                            Page2.Run();
+                            ComparingNumbers.Run();
+                            Console.ReadKey();
+                            Console.Clear();
                             if (user.ModeChoice) { break; }
                         }
                         goto case 3;
 
                     case 3:
                         {
-                            Page3.Run();
+                            Exponentation.Run();
+                            Console.ReadKey();
+                            Console.Clear();
                             if (user.ModeChoice) { break; }
                         }
                         goto case 4;
 
                     case 4:
                         {
-                            Page4.Run();
+                            PaintingRectangles.Run();
+                            Console.ReadKey();
+                            Console.Clear();
                             if (user.ModeChoice) { break; }
                         }
                         goto case 5;
 
                     case 5:
                         {
-                            Page5.Run();    
+                            TicTacToe.Run();
+                            Console.ReadKey();
+                            Console.Clear();
                             if (user.ModeChoice) { break; }
                         }
                         break;
 
-                    case 0:
+                    default :
                         {
                             //Тупо тестовый
                         }

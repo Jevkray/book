@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace kniga.Core.Pages
 {
-    public static class Page1
+    public static class StartPage
     {
-        static string InputValue(string inputMessage)
+        public static string InputValue(string inputMessage)
         {
             Console.Write(inputMessage);
             string value = Console.ReadLine();
@@ -17,12 +17,10 @@ namespace kniga.Core.Pages
         }
         public static void Run(User user)
         {
-            //Страница привествия
-            
             user.Name = InputValue("Введите ваше имя: ");
             Console.Clear();
 
-            do // do .. while - выступает в качестве возвращения в начало , в случае ошибки
+            do
             {
                 user.Age = Functions.CoreFunctions.ParseToIntPositiveNumber(InputValue("Введите возраст персонажа: "));
             }
@@ -32,8 +30,6 @@ namespace kniga.Core.Pages
 
             user.Print();
 
-            Console.ReadKey();
-            Console.Clear();
             
         }
     }

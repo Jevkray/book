@@ -1,12 +1,13 @@
-﻿using System;
+﻿using kniga.Helpers.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace kniga.constants
+namespace kniga.Heplers
 {
-    public class errorMessages
+    public class ErrorMessagesWriter
     {
 
         public static void ErrorMessage(ErrorType errorType)
@@ -26,14 +27,6 @@ namespace kniga.constants
                     Console.WriteLine("Введенное число не соответствует условию, повторите попытку");
                     break;
             }
-        }
-
-        public enum ErrorType
-        {
-            DefaultError,
-            TypeError,
-            ParseError,
-            NumberError
         }
     }
 }

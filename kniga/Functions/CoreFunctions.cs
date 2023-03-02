@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using kniga;
-using kniga.constants;
+using kniga.Helpers.Enums;
+using kniga.Heplers;
 
 namespace kniga.Functions
 {
@@ -68,7 +69,7 @@ namespace kniga.Functions
             }
             else
             {
-                errorMessages.ErrorMessage(errorMessages.ErrorType.DefaultError);//формат должен быть static чтобы функция ErrorMessage- работала
+                ErrorMessagesWriter.ErrorMessage(ErrorType.DefaultError);//формат должен быть static чтобы функция ErrorMessage- работала
                 return 0;
             }
         }
@@ -82,7 +83,7 @@ namespace kniga.Functions
             }
             else
             {
-                errorMessages.ErrorMessage(errorMessages.ErrorType.DefaultError);
+                ErrorMessagesWriter.ErrorMessage(ErrorType.DefaultError);
                 return 0;
             }
         }
@@ -96,7 +97,7 @@ namespace kniga.Functions
             }
             else
             {
-                errorMessages.ErrorMessage(errorMessages.ErrorType.DefaultError);
+                ErrorMessagesWriter.ErrorMessage(ErrorType.DefaultError);
                 return 0;
             }
         }

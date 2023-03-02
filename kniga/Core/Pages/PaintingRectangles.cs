@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace kniga.Core.Pages
 {
-    public static class Page4
+    public static class PaintingRectangles
     {
         public static void Run()
         {
@@ -76,9 +76,7 @@ namespace kniga.Core.Pages
 
             }
             while (isResumeWork == true);
-            Console.ReadKey();
-            Console.Clear();
-            Console.WriteLine("Конец.");
+
         }
     }
 }
