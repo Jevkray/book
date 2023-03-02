@@ -71,7 +71,7 @@ namespace kniga.Core.Pages
                     {
                         break;
                     }
-                    if (turnStep)
+                    else if (turnStep)
                     {
                         cell[numberChoice].Sign = stepSignPrew = "X";
                         stepSign = "O";
@@ -91,7 +91,7 @@ namespace kniga.Core.Pages
                         stepsListX = CoreFunctions.StepsMessageLog(cell[numberChoice].ChoicedPos, stepsListX);
                         currentStepsList = stepsListX;
                     }
-                    if (cell[numberChoice].Sign == "O")
+                    else
                     {
                         stepsListO = CoreFunctions.StepsMessageLog(cell[numberChoice].ChoicedPos, stepsListO);
                         currentStepsList = stepsListO;
