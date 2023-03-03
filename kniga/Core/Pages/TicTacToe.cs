@@ -17,7 +17,7 @@ namespace kniga.Core.Pages
         public static void Run()
         {
             Console.Clear();
-            //Крестики - нолики - игра
+
             User.TicTacToe tictactoe = new User.TicTacToe();
 
             tictactoe.Scale = GameScale;
@@ -40,7 +40,7 @@ namespace kniga.Core.Pages
             bool isResumeWork;
 
             int length = 0;
-            //Graphic interface
+
             string stepsListX = null;
             string stepsListO = null;
             string currentStepsList = null;

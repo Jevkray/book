@@ -18,7 +18,7 @@ namespace kniga.Functions
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Быстрый переход");
                 Console.Write("Введите номер страницы на которую желаете перейти:");
-                PageChoiceSwitch = ParseToIntNumber(Console.ReadLine());
+                PageChoiceSwitch = CoreFunctions.ParseToIntNumber(Console.ReadLine());
             }
 
             if (!ModeChoice)

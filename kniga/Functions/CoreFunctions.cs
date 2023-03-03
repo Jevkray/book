@@ -69,6 +69,16 @@ namespace kniga.Functions
             return confirmedNumber;
         }
 
+        public static int EnterPositiveInt(int value, string message)
+        {
+            do
+            {
+                value = CoreFunctions.EnterIntValue(message);
+            }
+            while (value <= 0);
+            return value;
+        }
+
         public static int ParseToIntPositiveNumber(string input)
         {
             bool result = int.TryParse(input, out int number);

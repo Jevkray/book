@@ -21,8 +21,8 @@ namespace kniga.Core.Pages
             Console.ReadKey();
             Console.Clear();
 
-            rectangle.Width = PaintingFunctions.EnterPositiveInt(rectangle.Width, "Введите ширину стороны прямоугольника: ");
-            rectangle.Height = PaintingFunctions.EnterPositiveInt(rectangle.Height, "Введите высоту стороны прямоугольника: ");
+            rectangle.Width = CoreFunctions.EnterPositiveInt(rectangle.Width, "Введите ширину стороны прямоугольника: ");
+            rectangle.Height = CoreFunctions.EnterPositiveInt(rectangle.Height, "Введите высоту стороны прямоугольника: ");
 
             string[,] rectangleArea = PaintingFunctions.CreateRectangleArea(rectangle.Height, rectangle.Width);
 

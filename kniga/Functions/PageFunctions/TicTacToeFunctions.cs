@@ -33,10 +33,10 @@ namespace kniga.Functions.PageFunctions
 
         public static int DisplayTicTacToeArea(string[] tictactoeArea, int Scale)
         {
-            for (int i = 0; i < 9; i++) //Убрать - магические - числа
+            for (int i = 0; i < Scale*Scale; i++) 
             {
                 Console.Write($" {tictactoeArea[i]} ");
-                if (i % 3 == 2)
+                if (i % Scale == 2)
                     Console.WriteLine();
             }
             return 0;
