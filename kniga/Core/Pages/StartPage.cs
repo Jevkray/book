@@ -9,20 +9,14 @@ namespace kniga.Core.Pages
 {
     public static class StartPage
     {
-        public static string EnterStringValue(string inputMessage)
-        {
-            Console.Write(inputMessage);
-            string value = Console.ReadLine();
-            return value;
-        }
         public static void Run(User user)
         {
-            user.Name = EnterStringValue("Введите ваше имя: ");
+            user.Name = CoreFunctions.EnterStringValue("Введите ваше имя: ");
             Console.Clear();
 
             do
             {
-                user.Age = Functions.CoreFunctions.ParseToIntPositiveNumber(EnterStringValue("Введите возраст персонажа: "));
+                user.Age = Functions.CoreFunctions.ParseToIntPositiveNumber(CoreFunctions.EnterStringValue("Введите возраст персонажа: "));
             }
             while (user.Age == 0);
 

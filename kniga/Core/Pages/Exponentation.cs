@@ -14,10 +14,10 @@ namespace kniga.Core.Pages
         {
             Console.Clear();
 
-            ComparingNumbers.OutputText(ConsoleColor.Green, "Страница №3, Степени числа до \"n\" (В горочку) \n");
+            CoreFunctions.OutputText(ConsoleColor.Green, "Страница №3, Степени числа до \"n\" (В горочку) \n");
 
-            double number = ComparingNumbers.EnterDouble("Введите число которое нужно возвести в степень: ");
-            double degree = ComparingNumbers.EnterDouble($"Введите степень в которую нужно взвести число {number}: ");
+            double number = CoreFunctions.EnterDouble("Введите число которое нужно возвести в степень: ");
+            double degree = CoreFunctions.EnterDouble($"Введите степень в которую нужно взвести число {number}: ");
 
             if (degree > 0)
             {

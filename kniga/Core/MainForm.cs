@@ -17,9 +17,9 @@ namespace kniga.Core
             {
 
                 User user = new User();
-                user.ModeChoice = CoreFunctions.ModeChoosing();
+                user.ModeChoice = MainFormFunctions.ModeChoosing();
 
-                switch (CoreFunctions.PageChoosing(user.ModeChoice))
+                switch (MainFormFunctions.PageChoosing(user.ModeChoice))
                 {
                     case 1:
                         {
@@ -50,7 +50,7 @@ namespace kniga.Core
 
                     case 4:
                         {
-                            PaintingRectangles.Run();
+                            Painting.Run();
                             Console.ReadKey();
                             Console.Clear();
                             if (user.ModeChoice) { break; }

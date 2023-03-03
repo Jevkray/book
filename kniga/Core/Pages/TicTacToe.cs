@@ -5,6 +5,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using kniga.Functions;
+using kniga.Functions.PageFunctions;
 using static User;
 
 namespace kniga.Core.Pages
@@ -12,16 +13,6 @@ namespace kniga.Core.Pages
     public static class TicTacToe
     {
         private const int GameScale = 3;
-
-        public static void PrintInterface(string[] tictactoeArea, int gameScale, string? stepSign, string stepsListX, string stepsListO)
-        {
-            Console.WriteLine("---------");
-            CoreFunctions.DisplayTicTacToeArea(tictactoeArea, gameScale);
-            Console.WriteLine("---------");
-            Console.WriteLine("Turn: " + stepSign);
-            Console.WriteLine("Steps player X: " + stepsListX);
-            Console.WriteLine("Steps player O: " + stepsListO);
-        }
 
         public static void Run()
         {
@@ -39,7 +30,7 @@ namespace kniga.Core.Pages
                 cell.Add(new User.TicTacToe.Cell() { ChoicedPos = i, IsFree = true });
             }
 
-            string[] tictactoeArea = CoreFunctions.CreateTicTacToeArea(tictactoe.Scale);
+            string[] tictactoeArea = TicTacToeFunctions.CreateTicTacToeArea(tictactoe.Scale);
 
             string stepSign = "X";
             string stepSignPrew = null;
@@ -58,7 +49,7 @@ namespace kniga.Core.Pages
 
             do
             {
-                PrintInterface(tictactoeArea, tictactoe.Scale, stepSign, stepsListX, stepsListO);
+                TicTacToeFunctions.PrintInterface(tictactoeArea, tictactoe.Scale, stepSign, stepsListX, stepsListO);
 
                 length++;
                 bool numberChoiceParse;
@@ -85,19 +76,19 @@ namespace kniga.Core.Pages
                     cell[numberChoice].ChoicedPos = numberChoice - 1;
                     cell[numberChoice].IsFree = false;
 
-                    CoreFunctions.ReplaceElementTicTacToeArea(tictactoeArea, cell[numberChoice].ChoicedPos, cell[numberChoice].Sign);
+                    TicTacToeFunctions.ReplaceElementTicTacToeArea(tictactoeArea, cell[numberChoice].ChoicedPos, cell[numberChoice].Sign);
                     if (cell[numberChoice].Sign == "X")
                     {
-                        stepsListX = CoreFunctions.StepsMessageLog(cell[numberChoice].ChoicedPos, stepsListX);
+                        stepsListX = TicTacToeFunctions.StepsMessageLog(cell[numberChoice].ChoicedPos, stepsListX);
                         currentStepsList = stepsListX;
                     }
                     else
                     {
-                        stepsListO = CoreFunctions.StepsMessageLog(cell[numberChoice].ChoicedPos, stepsListO);
+                        stepsListO = TicTacToeFunctions.StepsMessageLog(cell[numberChoice].ChoicedPos, stepsListO);
                         currentStepsList = stepsListO;
                     }
 
-                    endGameCheck = CoreFunctions.CheckEndGameTicTacToe(currentStepsList);
+                    endGameCheck = TicTacToeFunctions.CheckEndGameTicTacToe(currentStepsList);
 
                     stepCounter++;
                     turnStep = !turnStep;
@@ -110,11 +101,11 @@ namespace kniga.Core.Pages
                 if (endGameCheck)
                 {
                     Console.Clear();
-                    PrintInterface(tictactoeArea, tictactoe.Scale, stepSign, stepsListX, stepsListO);
+                    TicTacToeFunctions.PrintInterface(tictactoeArea, tictactoe.Scale, stepSign, stepsListX, stepsListO);
                     Console.WriteLine("\nWinner is: " + stepSignPrew);
 
                     isResumeWork = false;
-                    CoreFunctions.LoggingTicTacToeAsync(stepsListX, stepsListO, stepSignPrew);
+                    TicTacToeFunctions.LoggingTicTacToeAsync(stepsListX, stepsListO, stepSignPrew);
                 }
                 else
                 {
@@ -126,10 +117,10 @@ namespace kniga.Core.Pages
                     else
                     {
                         Console.Clear();
-                        PrintInterface(tictactoeArea, tictactoe.Scale, stepSign, stepsListX, stepsListO);
+                        TicTacToeFunctions.PrintInterface(tictactoeArea, tictactoe.Scale, stepSign, stepsListX, stepsListO);
                         Console.WriteLine("\nDraw !");
                         isResumeWork = false;
-                        CoreFunctions.LoggingTicTacToeAsync(stepsListX, stepsListO, "Draw");
+                        TicTacToeFunctions.LoggingTicTacToeAsync(stepsListX, stepsListO, "Draw");
                     }
 
                 }
