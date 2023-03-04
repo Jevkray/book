@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "kniga", "kniga\kniga.csproj", "{1B39105D-D906-45A5-A6B2-E004D2007BDA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "knigaWEB", "knigaWEB\knigaWEB.csproj", "{DDC7E611-0371-47BB-B744-1B901248BEE6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		ConEmu|Any CPU = ConEmu|Any CPU
@@ -18,6 +20,12 @@ Global
 		{1B39105D-D906-45A5-A6B2-E004D2007BDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B39105D-D906-45A5-A6B2-E004D2007BDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B39105D-D906-45A5-A6B2-E004D2007BDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDC7E611-0371-47BB-B744-1B901248BEE6}.ConEmu|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDC7E611-0371-47BB-B744-1B901248BEE6}.ConEmu|Any CPU.Build.0 = Debug|Any CPU
+		{DDC7E611-0371-47BB-B744-1B901248BEE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDC7E611-0371-47BB-B744-1B901248BEE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDC7E611-0371-47BB-B744-1B901248BEE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDC7E611-0371-47BB-B744-1B901248BEE6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
