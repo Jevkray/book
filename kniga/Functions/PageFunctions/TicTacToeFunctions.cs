@@ -72,7 +72,7 @@ namespace kniga.Functions.PageFunctions
 
         public static async Task<bool> LoggingTicTacToeAsync(string stepsListX, string stepsListO, string winner)
         {
-            string path = @"C:\Users\Kray\source\repos\kniga\kniga\Logs\LogsTicTacToe.txt";
+            string path = @"C:\Users\semmi\source\repos\Jevkray\book\kniga\Logs\LogsTicTacToe.txt";
             string textLog = "Game at: " + DateTime.Now.ToString("G") + "\n" +
                           "Steps of side 'X': '" + stepsListX + "'\n" +
                           "Steps of side 'O': '" + stepsListO + "'\n";
